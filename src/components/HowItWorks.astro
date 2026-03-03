@@ -1,0 +1,56 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const steps = [
+  {
+    number: '01',
+    title: t('how.step1.title'),
+    description: t('how.step1.desc'),
+  },
+  {
+    number: '02',
+    title: t('how.step2.title'),
+    description: t('how.step2.desc'),
+  },
+  {
+    number: '03',
+    title: t('how.step3.title'),
+    description: t('how.step3.desc'),
+  },
+]
+---
+
+<section id="how-it-works" class="py-32 bg-slate-50">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-24">
+      <h2
+        class="text-5xl md:text-7xl font-black text-[#2C2C2E] mb-6 tracking-tight"
+        set:html={t('how.title')}
+      >
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      {
+        steps.map((step) => (
+          <div class="relative group">
+            <div class="text-8xl font-black text-[#2C2C2E]/5 absolute -top-12 -left-4 group-hover:text-[#2C2C2E]/10 transition-colors duration-500">
+              {step.number}
+            </div>
+            <div class="relative pt-8">
+              <h3 class="text-3xl font-black text-[#2C2C2E] mb-6 tracking-tight">
+                {step.title}
+              </h3>
+              <p class="text-xl text-[#2C2C2E]/60 font-medium leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

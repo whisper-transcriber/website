@@ -1,0 +1,93 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<section class="py-24 bg-white overflow-x-auto">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="bg-[#2C2C2E] rounded-[2.5rem] p-1 overflow-hidden shadow-2xl">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr
+            class="text-white/40 text-[10px] sm:text-xs font-black uppercase tracking-widest"
+          >
+            <th class="px-8 py-6">{t('comparison.title.metrics')}</th>
+            <th class="px-8 py-6">{t('comparison.title.keyboard')}</th>
+            <th class="px-8 py-6">{t('comparison.title.flow')}</th>
+            <th class="px-8 py-6 bg-white/5 text-white"
+              >{t('comparison.title.whisper')}</th
+            >
+          </tr>
+        </thead>
+        <tbody class="text-white/90 font-bold text-sm sm:text-base">
+          <tr class="border-t border-white/5">
+            <td
+              class="px-8 py-6 text-white/40 font-black uppercase text-[10px] tracking-widest"
+              >{t('comparison.speed.label')}</td
+            >
+            <td class="px-8 py-6 italic opacity-60"
+              >{t('comparison.speed.keyboard')}</td
+            >
+            <td class="px-8 py-6 italic opacity-60"
+              >{t('comparison.speed.flow')}</td
+            >
+            <td
+              class="px-8 py-6 bg-white/5 text-xl font-black italic tracking-tight"
+              >{t('comparison.speed.whisper')}</td
+            >
+          </tr>
+          <tr class="border-t border-white/5">
+            <td
+              class="px-8 py-6 text-white/40 font-black uppercase text-[10px] tracking-widest"
+              >{t('comparison.processing.label')}</td
+            >
+            <td class="px-8 py-6 opacity-60">—</td>
+            <td class="px-8 py-6 opacity-60"
+              >{t('comparison.processing.flow')}</td
+            >
+            <td class="px-8 py-6 bg-white/5 text-[#FFFFFF]"
+              >{t('comparison.processing.whisper')}</td
+            >
+          </tr>
+          <tr class="border-t border-white/5">
+            <td
+              class="px-8 py-6 text-white/40 font-black uppercase text-[10px] tracking-widest"
+              >{t('comparison.privacy.label')}</td
+            >
+            <td class="px-8 py-6 opacity-60">—</td>
+            <td class="px-8 py-6 opacity-60 text-red-400/80"
+              >{t('comparison.privacy.flow')}</td
+            >
+            <td class="px-8 py-6 bg-white/5 text-[#FFFFFF]"
+              >{t('comparison.privacy.whisper')}</td
+            >
+          </tr>
+          <tr class="border-t border-white/5">
+            <td
+              class="px-8 py-6 text-white/40 font-black uppercase text-[10px] tracking-widest"
+              >{t('comparison.cost.label')}</td
+            >
+            <td class="px-8 py-6 opacity-60">—</td>
+            <td class="px-8 py-6 opacity-60">{t('comparison.cost.flow')}</td>
+            <td class="px-8 py-6 bg-white/5 text-[#FFFFFF]"
+              >{t('comparison.cost.whisper')}</td
+            >
+          </tr>
+          <tr class="border-t border-white/5">
+            <td
+              class="px-8 py-6 text-white/40 font-black uppercase text-[10px] tracking-widest"
+              >{t('comparison.limits.label')}</td
+            >
+            <td class="px-8 py-6 opacity-60">—</td>
+            <td class="px-8 py-6 opacity-60">{t('comparison.limits.flow')}</td>
+            <td class="px-8 py-6 bg-white/5 text-[#FFFFFF]"
+              >{t('comparison.limits.whisper')}</td
+            >
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

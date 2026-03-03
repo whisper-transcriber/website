@@ -1,0 +1,128 @@
+---
+const plans = [
+  {
+    name: 'Free Trial',
+    price: '0',
+    description: 'Try all features for 3 days. No credit card required.',
+    features: [
+      '3 days of full access',
+      'All features unlocked',
+      'Native Apple Silicon app',
+      '99 languages support',
+      'Local AI processing',
+    ],
+    cta: 'Start free trial',
+    highlight: false,
+  },
+  {
+    name: 'Lifetime License',
+    price: '29', // Example price, adjustment may be needed
+    description: 'One-time payment. All features included forever.',
+    features: [
+      'Lifetime updates',
+      'Priority email support',
+      'All AI models included',
+      'Unlimited usage',
+      'No recurring fees',
+    ],
+    cta: 'Get lifetime access',
+    highlight: true,
+  },
+]
+---
+
+<section id="pricing" class="py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-20">
+      <h2
+        class="text-5xl md:text-7xl font-black text-[#2C2C2E] mb-6 tracking-tight"
+      >
+        One price. <span class="opacity-30">Forever.</span>
+      </h2>
+      <p class="text-xl text-[#2C2C2E]/60 font-medium max-w-2xl mx-auto">
+        No subscriptions. No cloud costs. Just a powerful tool you own for life.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-24">
+      {
+        plans.map((plan) => (
+          <div
+            class={`relative rounded-[2.5rem] p-12 transition-all duration-300 ${
+              plan.highlight
+                ? 'bg-[#2C2C2E] text-white shadow-2xl scale-105'
+                : 'bg-slate-50 border border-[#2C2C2E]/5 text-[#2C2C2E]'
+            }`}
+          >
+            <h3 class="text-2xl font-black mb-4 tracking-tight">{plan.name}</h3>
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class="text-5xl font-black tracking-tight">
+                ${plan.price}
+              </span>
+              {plan.price !== '0' && (
+                <span
+                  class={`text-sm font-bold uppercase tracking-widest ${
+                    plan.highlight ? 'text-white/40' : 'text-[#2C2C2E]/40'
+                  }`}
+                >
+                  one-time
+                </span>
+              )}
+            </div>
+            <p
+              class={`mb-10 font-medium ${
+                plan.highlight ? 'text-white/60' : 'text-[#2C2C2E]/60'
+              }`}
+            >
+              {plan.description}
+            </p>
+            <ul class="space-y-4 mb-12">
+              {plan.features.map((feature) => (
+                <li class="flex items-center gap-3">
+                  <svg
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="3"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="font-bold text-sm tracking-tight">
+                    {feature}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="https://api.whispertranscriber.com/download"
+              class={`w-full py-5 rounded-2xl font-black text-center transition-all duration-300 block ${
+                plan.highlight
+                  ? 'bg-white text-[#2C2C2E] hover:bg-slate-100'
+                  : 'bg-[#2C2C2E] text-white hover:opacity-90'
+              }`}
+            >
+              {plan.cta}
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="max-w-3xl mx-auto text-center p-12 bg-[#2C2C2E]/5 rounded-[2.5rem] border border-[#2C2C2E]/5"
+    >
+      <h4 class="text-2xl font-black text-[#2C2C2E] mb-4 tracking-tight">
+        Why avoid subscriptions?
+      </h4>
+      <p class="text-[#2C2C2E]/60 font-medium leading-relaxed">
+        Competitors cost $12–15/month ($144–$180/year). With Whisper
+        Transcriber, you pay once and use it forever. It's yours.
+      </p>
+    </div>
+  </div>
+</section>
