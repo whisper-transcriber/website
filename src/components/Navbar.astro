@@ -23,8 +23,8 @@ const navLinks = [
           class="w-full h-full object-contain mix-blend-multiply"
         />
       </div>
-      <span class="text-xl font-bold tracking-tight text-[#2C2C2E]"
-        >Whisper<span class="text-[#2C2C2E]/60">Transcriber</span>
+      <span class="text-xl font-bold tracking-tight text-brand-dark"
+        >Whisper<span class="text-brand-dark/70">Transcriber</span>
       </span>
     </a>
 
@@ -33,7 +33,7 @@ const navLinks = [
         navLinks.map((link) => (
           <a
             href={link.href}
-            class="text-sm font-bold text-[#2C2C2E]/60 hover:text-[#2C2C2E] transition-colors"
+            class="text-sm font-bold text-brand-dark/70 hover:text-brand-dark transition-colors"
           >
             {link.label}
           </a>
@@ -44,11 +44,15 @@ const navLinks = [
     <div class="flex items-center gap-4">
       <a
         href="#pricing"
-        class="hidden sm:block bg-[#2C2C2E] text-white text-sm font-bold px-6 py-2.5 rounded-full hover:opacity-90 transition-all shadow-sm"
+        class="hidden sm:block bg-brand-dark text-white text-sm font-bold px-6 py-2.5 rounded-full hover:opacity-90 transition-all shadow-sm"
         >{t('nav.getStarted')}</a
       >
 
-      <button id="mobile-menu-btn" class="md:hidden text-slate-600">
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden text-slate-700 hover:text-slate-900"
+        aria-label="Toggle mobile menu"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
@@ -76,7 +80,7 @@ const navLinks = [
         navLinks.map((link) => (
           <a
             href={link.href}
-            class="text-base font-bold text-[#2C2C2E]/80 hover:text-[#2C2C2E] transition-colors mobile-link"
+            class="text-base font-bold text-brand-dark/80 hover:text-brand-dark transition-colors mobile-link"
           >
             {link.label}
           </a>
@@ -84,7 +88,7 @@ const navLinks = [
       }
       <a
         href="#pricing"
-        class="text-base font-bold text-white bg-[#2C2C2E] text-center py-3 rounded-xl hover:opacity-90 transition-all sm:hidden mobile-link"
+        class="text-base font-bold text-white bg-brand-dark text-center py-3 rounded-xl hover:opacity-90 transition-all sm:hidden mobile-link"
         >{t('nav.getStarted')}</a
       >
     </nav>
