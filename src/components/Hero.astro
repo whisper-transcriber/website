@@ -29,7 +29,7 @@ const t = useTranslations(lang)
       class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-5 mb-12 md:mb-16"
     >
       <a
-        href="https://api.whispertranscriber.com/download"
+        href="#pricing"
         class="btn-brand-primary flex-1 sm:flex-none text-lg px-8 sm:px-12 py-4 sm:py-5 shadow-xl flex items-center justify-center gap-3"
       >
         <svg
@@ -112,65 +112,6 @@ const t = useTranslations(lang)
             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
         {t('hero.badge.privacy')}
-      </div>
-    </div>
-
-    <!-- App Preview Container -->
-    <div class="relative max-w-5xl mx-auto">
-      <div class="absolute inset-0 bg-[#2C2C2E]/5 blur-3xl rounded-full -z-10">
-      </div>
-      <div
-        class="bg-cream-50 border-4 md:border-8 border-[#2C2C2E]/5 rounded-[2rem] md:rounded-[2.5rem] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.1)] overflow-hidden"
-      >
-        <div
-          class="aspect-[4/3] md:aspect-[16/10] bg-[#2C2C2E]/5 flex items-center justify-center p-6 md:p-12"
-        >
-          <div
-            class="w-full h-full bg-cream-50 rounded-2xl shadow-sm flex flex-col p-10 text-left"
-          >
-            <div class="flex items-center gap-3 mb-8">
-              <div
-                class="w-10 h-10 rounded-full bg-[#2C2C2E] flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
-                  ></path>
-                </svg>
-              </div>
-              <div class="h-4 w-32 bg-[#2C2C2E]/10 rounded-full"></div>
-            </div>
-            <div class="space-y-4">
-              <div class="h-5 w-full bg-[#2C2C2E]/5 rounded-lg"></div>
-              <div class="h-5 w-[90%] bg-[#2C2C2E]/5 rounded-lg"></div>
-              <div class="h-5 w-[95%] bg-[#2C2C2E]/5 rounded-lg"></div>
-              <div
-                class="h-5 w-[80%] bg-[#2C2C2E]/10 rounded-lg border-l-4 border-[#2C2C2E]"
-              >
-              </div>
-            </div>
-            <div
-              class="mt-auto flex justify-between items-center text-[#2C2C2E]/20"
-            >
-              <div class="flex gap-2">
-                <div class="w-6 h-6 rounded bg-[#2C2C2E]/5"></div>
-                <div class="w-6 h-6 rounded bg-[#2C2C2E]/5"></div>
-              </div>
-              <div class="text-xs font-bold font-mono">
-                {t('hero.preview.flowActive')}
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

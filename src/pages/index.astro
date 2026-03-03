@@ -6,10 +6,12 @@ const t = useTranslations(lang)
 import Layout from '../layouts/Layout.astro'
 import Navbar from '../components/Navbar.astro'
 import Hero from '../components/Hero.astro'
+import FeatureTabs from '../components/FeatureTabs.astro'
 import ComparisonBar from '../components/ComparisonBar.astro'
 import HowItWorks from '../components/HowItWorks.astro'
 import Features from '../components/Features.astro'
 import PrivacyTable from '../components/PrivacyTable.astro'
+import Testimonials from '../components/Testimonials.astro'
 import WhoItsFor from '../components/WhoItsFor.astro'
 import CompetitorComparison from '../components/CompetitorComparison.astro'
 import Requirements from '../components/Requirements.astro'
@@ -22,11 +24,14 @@ import Footer from '../components/Footer.astro'
   <Navbar />
   <main>
     <Hero />
+    <FeatureTabs />
     <ComparisonBar />
     <HowItWorks />
 
     <Features />
     <PrivacyTable />
+
+    <Testimonials />
 
     <WhoItsFor />
     <CompetitorComparison />
@@ -49,7 +54,7 @@ import Footer from '../components/Footer.astro'
           {t('index.cta.description')}
         </p>
         <a
-          href="https://api.whispertranscriber.com/download"
+          href="#pricing"
           class="btn-brand-primary w-full sm:w-auto text-lg sm:text-xl px-10 sm:px-16 py-5 sm:py-6 inline-flex items-center justify-center gap-3 sm:gap-4 shadow-2xl"
         >
           <svg

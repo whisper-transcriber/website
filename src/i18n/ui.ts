@@ -114,6 +114,11 @@ export const ui = {
         'privacy.row5.cloud': 'Indefinite',
         'privacy.quote': '"While others process audio in the cloud, we process everything on your Mac\'s chip."',
 
+        // Testimonials
+        'testimonials.badge': 'WALL OF LOVE',
+        'testimonials.title': 'Don\'t just take <br /><span class="opacity-30">our word for it.</span>',
+        'testimonials.subtitle': 'Professionals, developers, and creators sharing their unedited experiences.',
+
         // Who It's For
         'who.title': 'Built for <br /><span class="opacity-30">builders and thinkers.</span>',
         'who.devs.title': 'Developers',
@@ -325,6 +330,11 @@ export const ui = {
         'privacy.row5.whisper': 'Temporário (Auto-exclusão)',
         'privacy.row5.cloud': 'Indefinido',
         'privacy.quote': '"Enquanto os outros processam seu áudio na nuvem, nós processamos tudo diretamente no chip do seu Mac."',
+
+        // Testimonials
+        'testimonials.badge': 'O QUE DIZEM',
+        'testimonials.title': 'Não acredite apenas <br /><span class="opacity-30">no que nós dizemos.</span>',
+        'testimonials.subtitle': 'Profissionais, desenvolvedores e criadores compartilhando suas experiências reais e sem filtro.',
 
         // Who It's For
         'who.title': 'Feito para <br /><span class="opacity-30">criadores, programadores e pensadores.</span>',

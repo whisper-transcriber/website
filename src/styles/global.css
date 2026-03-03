@@ -18,6 +18,30 @@
 
   --shadow-clean: 0 8px 30px rgba(0, 0, 0, 0.04);
   --shadow-clean-hover: 0 8px 40px rgba(0, 0, 0, 0.08);
+
+  /* Marquee Animations */
+  --animate-marquee: marquee 120s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 120s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes marquee-reverse {
+    from {
+      transform: translateX(-100%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
 }
 
 :root {

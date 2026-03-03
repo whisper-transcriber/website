@@ -1,0 +1,440 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+// Final 8 features mapped to the user's videos
+const featureGroup1 = [
+  {
+    id: 'f1',
+    title: lang === 'pt' ? 'Acesso Global' : 'Paste Anywhere',
+    desc:
+      lang === 'pt'
+        ? 'O app digita o texto automaticamente no lugar do seu cursor, sem precisar de Cmd+V. Funciona magicamente no Slack, Notion ou VS Code.'
+        : 'The app automatically types the text right where your cursor is, no Cmd+V needed. Works magically in Slack, Notion, or VS Code.',
+    videoKey: 'pastes-anywhere',
+  },
+  {
+    id: 'f2',
+    title: lang === 'pt' ? 'Atalhos Globais' : 'Global Hotkeys',
+    desc:
+      lang === 'pt'
+        ? 'Inicie a transcrição de qualquer tela ou aplicativo instantaneamente usando atalhos de teclado.'
+        : 'Start transcribing from any screen or app instantly using customizable keyboard shortcuts.',
+    videoKey: 'hotkey',
+  },
+  {
+    id: 'f3',
+    title: lang === 'pt' ? 'Seleção de Microfone' : 'Mic Selection',
+    desc:
+      lang === 'pt'
+        ? 'Alterne facilmente entre seus microfones, fones Bluetooth ou de estúdio a qualquer momento.'
+        : 'Easily switch between internal microphones, Bluetooth headsets, or studio mics on the fly.',
+    videoKey: 'mic-selection',
+  },
+  {
+    id: 'f4',
+    title: lang === 'pt' ? 'Suporte Multilíngue' : 'Multilingual Support',
+    desc:
+      lang === 'pt'
+        ? 'O Whisper reconhece e alterna entre idiomas perfeitamente sem precisar configurar nada.'
+        : 'Whisper seamlessly recognizes and switches between languages without manual configuration.',
+    videoKey: 'languages',
+  },
+]
+
+const featureGroup2 = [
+  {
+    id: 'f5',
+    title: lang === 'pt' ? 'Modelos de IA Nativos' : 'Native AI Models',
+    desc:
+      lang === 'pt'
+        ? 'Modelos de transcrição nativos otimizados para usar a potência total do seu chip da Apple (M1/M2/M3).'
+        : 'Native transcription models optimized to use the full power of your Apple silicon chip.',
+    videoKey: 'ai-models',
+  },
+  {
+    id: 'f6',
+    title: lang === 'pt' ? 'Gravação Inteligente' : 'Smart Recording',
+    desc:
+      lang === 'pt'
+        ? 'Grave diretamente da barra de menus sem abrir nenhum app. A IA pontua automaticamente acompanhando seu ritmo.'
+        : 'Record straight from the menu bar without opening any app. AI auto-punctuates based on your rhythm.',
+    videoKey: 'menu-bar',
+  },
+  {
+    id: 'f7',
+    title: lang === 'pt' ? 'Overlay de Gravação' : 'Recording Overlay',
+    desc:
+      lang === 'pt'
+        ? 'Uma interface flutuante minimalista garante que você saiba sempre quando o microfone está ouvindo.'
+        : 'A minimalist floating interface ensures you always know when your microphone is listening.',
+    videoKey: 'recording-overlay',
+  },
+  {
+    id: 'f8',
+    title: lang === 'pt' ? 'Privacidade Absoluta' : '100% Offline & Private',
+    desc:
+      lang === 'pt'
+        ? 'Zero dados na nuvem. Suas gravações nunca saem do seu computador garantindo segurança total.'
+        : 'Zero cloud data. Your recordings never leave your computer ensuring complete safety.',
+    videoKey: 'local-private',
+  },
+]
+
+const VIDEO_BASE_PATH = '/videos'
+---
+
+<!-- GROUP 1: TABS ON LEFT, VIDEO ON RIGHT -->
+<section
+  class="pt-20 lg:pt-32 pb-10 lg:pb-16 bg-white relative overflow-hidden"
+  id="features-part-1"
+>
+  <div class="container mx-auto px-6 relative z-10 max-w-6xl">
+    <div class="text-center mb-16 max-w-2xl mx-auto">
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CCFCCB]/20 border border-[#CCFCCB]/30 text-[#2C2C2E] text-xs font-bold tracking-widest uppercase mb-6"
+      >
+        {lang === 'pt' ? 'Fluxo de Trabalho' : 'Core Workflow'}
+      </div>
+      <h2
+        class="text-3xl md:text-5xl font-bold font-display text-[#2C2C2E] mb-6"
+      >
+        {lang === 'pt' ? 'Tudo que você precisa.' : 'Everything you need.'}
+      </h2>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 items-stretch">
+      <!-- Tabs (Left) -->
+      <div
+        class="w-full lg:w-5/12 flex flex-col gap-2 relative z-20"
+        id="tab-group-1"
+      >
+        {
+          featureGroup1.map((feature, index) => (
+            <button
+              type="button"
+              class={`feature-tab-1 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center ${
+                index === 0
+                  ? 'border-[#2C2C2E] bg-white shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)]'
+                  : 'border-transparent bg-transparent hover:bg-[#2C2C2E]/5 hover:border-[#2C2C2E]/10'
+              }`}
+              data-index={index}
+              data-videokey={feature.videoKey}
+              aria-label={`Select feature ${feature.title}`}
+            >
+              <h3
+                class={`text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 ${
+                  index === 0
+                    ? 'text-[#2C2C2E]'
+                    : 'text-[#2C2C2E]/60 group-hover:text-[#2C2C2E]'
+                }`}
+              >
+                {feature.title}
+              </h3>
+              <p
+                class={`text-sm tracking-tight leading-relaxed transition-colors duration-300 ${
+                  index === 0
+                    ? 'text-[#2C2C2E]/80'
+                    : 'text-[#2C2C2E]/50 group-hover:text-[#2C2C2E]/70'
+                }`}
+              >
+                {feature.desc}
+              </p>
+            </button>
+          ))
+        }
+      </div>
+
+      <!-- Video Display (Right) -->
+      <div class="w-full lg:w-7/12 mt-8 lg:mt-0 relative">
+        <div
+          class="relative w-full aspect-square rounded-3xl overflow-hidden border border-[#2C2C2E]/10 shadow-2xl bg-[#F2F0EA] flex items-center justify-center group/video"
+        >
+          <!-- Loading state placeholder -->
+          <div
+            class="absolute inset-0 flex items-center justify-center opacity-100 transition-opacity duration-300"
+            id="video-loader-1"
+          >
+            <div
+              class="w-8 h-8 rounded-full border-4 border-[#2C2C2E]/20 border-t-[#2C2C2E] animate-spin"
+            >
+            </div>
+          </div>
+
+          <!-- Video Element -->
+          <video
+            id="video-player-1"
+            data-src={`${VIDEO_BASE_PATH}/${lang}/${featureGroup1[0].videoKey}.mp4`}
+            loop
+            muted
+            playsinline
+            class="absolute inset-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-500"
+            onloadeddata="this.classList.remove('opacity-0'); document.getElementById('video-loader-1').classList.add('opacity-0');"
+          ></video>
+
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 pointer-events-none z-20"
+          >
+          </div>
+        </div>
+
+        <div
+          class="absolute -top-12 -right-12 w-64 h-64 bg-[#CCFCCB]/30 rounded-full blur-[80px] -z-10"
+        >
+        </div>
+        <div
+          class="absolute -bottom-12 -left-12 w-48 h-48 bg-blue-400/10 rounded-full blur-[60px] -z-10"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GROUP 2: VIDEO ON LEFT, TABS ON RIGHT -->
+<section
+  class="pt-10 lg:pt-16 pb-20 lg:pb-32 bg-cream-50 relative overflow-hidden"
+  id="features-part-2"
+>
+  <div class="container mx-auto px-6 relative z-10 max-w-6xl">
+    <div
+      class="flex flex-col-reverse lg:flex-row gap-8 lg:gap-16 items-stretch"
+    >
+      <!-- Video Display (Left) -->
+      <div class="w-full lg:w-7/12 mt-8 lg:mt-0 relative flex-shrink-0">
+        <div
+          class="relative w-full aspect-square rounded-3xl overflow-hidden border border-[#2C2C2E]/10 shadow-2xl bg-[#F2F0EA] flex items-center justify-center group/video"
+        >
+          <!-- Loading loader -->
+          <div
+            class="absolute inset-0 flex items-center justify-center opacity-100 transition-opacity duration-300"
+            id="video-loader-2"
+          >
+            <div
+              class="w-8 h-8 rounded-full border-4 border-[#2C2C2E]/20 border-t-[#2C2C2E] animate-spin"
+            >
+            </div>
+          </div>
+
+          <!-- Video Element -->
+          <video
+            id="video-player-2"
+            data-src={`${VIDEO_BASE_PATH}/${lang}/${featureGroup2[0].videoKey}.mp4`}
+            loop
+            muted
+            playsinline
+            class="absolute inset-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-500"
+            onloadeddata="this.classList.remove('opacity-0'); document.getElementById('video-loader-2').classList.add('opacity-0');"
+          ></video>
+
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 pointer-events-none z-20"
+          >
+          </div>
+        </div>
+
+        <div
+          class="absolute -bottom-12 -right-12 w-64 h-64 bg-orange-200/20 rounded-full blur-[80px] -z-10"
+        >
+        </div>
+      </div>
+
+      <!-- Tabs (Right) -->
+      <div
+        class="w-full lg:w-5/12 flex flex-col gap-2 relative z-20"
+        id="tab-group-2"
+      >
+        {
+          featureGroup2.map((feature, index) => (
+            <button
+              type="button"
+              class={`feature-tab-2 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center ${
+                index === 0
+                  ? 'border-[#2C2C2E] bg-white shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)]'
+                  : 'border-transparent bg-transparent hover:bg-[#2C2C2E]/5 hover:border-[#2C2C2E]/10'
+              }`}
+              data-index={index}
+              data-videokey={feature.videoKey}
+              aria-label={`Select feature ${feature.title}`}
+            >
+              <h3
+                class={`text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 ${
+                  index === 0
+                    ? 'text-[#2C2C2E]'
+                    : 'text-[#2C2C2E]/60 group-hover:text-[#2C2C2E]'
+                }`}
+              >
+                {feature.title}
+              </h3>
+              <p
+                class={`text-sm tracking-tight leading-relaxed transition-colors duration-300 ${
+                  index === 0
+                    ? 'text-[#2C2C2E]/80'
+                    : 'text-[#2C2C2E]/50 group-hover:text-[#2C2C2E]/70'
+                }`}
+              >
+                {feature.desc}
+              </p>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const VIDEO_BASE_PATH = '/videos'
+  const lang = document.documentElement.lang || 'en'
+
+  // Lazy load initial videos when their section enters the viewport
+  function setupLazyVideo(playerElement: HTMLVideoElement, sectionId: string) {
+    if (!playerElement || !window.IntersectionObserver) return
+
+    const section = document.getElementById(sectionId)
+    if (!section) return
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const dataSrc = playerElement.getAttribute('data-src')
+            if (dataSrc) {
+              playerElement.src = dataSrc
+              playerElement
+                .play()
+                .catch((e) => console.log('Autoplay prevented:', e))
+              playerElement.removeAttribute('data-src')
+            }
+            observer.disconnect()
+          }
+        })
+      },
+      { rootMargin: '200px 0px' } // Load video slightly before it scrolls into view
+    )
+
+    observer.observe(section)
+  }
+
+  function setupTabs1() {
+    const tabs = document.querySelectorAll('.feature-tab-1')
+    const videoPlayer = document.getElementById(
+      'video-player-1'
+    ) as HTMLVideoElement
+    const loader = document.getElementById('video-loader-1')
+
+    if (!tabs.length || !videoPlayer || !loader) return
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => {
+          t.className =
+            'feature-tab-1 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-transparent bg-transparent hover:bg-[#2C2C2E]/5 hover:border-[#2C2C2E]/10'
+          const h3 = t.querySelector('h3')
+          const p = t.querySelector('p')
+          if (h3)
+            h3.className =
+              'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-[#2C2C2E]/60 group-hover:text-[#2C2C2E]'
+          if (p)
+            p.className =
+              'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-[#2C2C2E]/50 group-hover:text-[#2C2C2E]/70'
+        })
+
+        tab.className =
+          'feature-tab-1 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-[#2C2C2E] bg-white shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)]'
+        const h3 = tab.querySelector('h3')
+        const p = tab.querySelector('p')
+        if (h3)
+          h3.className =
+            'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-[#2C2C2E]'
+        if (p)
+          p.className =
+            'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-[#2C2C2E]/80'
+
+        const videoKey = tab.getAttribute('data-videokey')
+        if (videoKey && !videoPlayer.src.includes(videoKey)) {
+          loader.classList.remove('opacity-0')
+          videoPlayer.classList.add('opacity-0')
+
+          setTimeout(() => {
+            videoPlayer.src = `${VIDEO_BASE_PATH}/${lang}/${videoKey}.mp4`
+            videoPlayer
+              .play()
+              .catch((e) => console.log('Autoplay prevented:', e))
+          }, 300)
+        }
+      })
+    })
+  }
+
+  function setupTabs2() {
+    const tabs = document.querySelectorAll('.feature-tab-2')
+    const videoPlayer = document.getElementById(
+      'video-player-2'
+    ) as HTMLVideoElement
+    const loader = document.getElementById('video-loader-2')
+
+    if (!tabs.length || !videoPlayer || !loader) return
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => {
+          t.className =
+            'feature-tab-2 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-transparent bg-transparent hover:bg-[#2C2C2E]/5 hover:border-[#2C2C2E]/10'
+          const h3 = t.querySelector('h3')
+          const p = t.querySelector('p')
+          if (h3)
+            h3.className =
+              'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-[#2C2C2E]/60 group-hover:text-[#2C2C2E]'
+          if (p)
+            p.className =
+              'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-[#2C2C2E]/50 group-hover:text-[#2C2C2E]/70'
+        })
+
+        tab.className =
+          'feature-tab-2 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-[#2C2C2E] bg-white shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)]'
+        const h3 = tab.querySelector('h3')
+        const p = tab.querySelector('p')
+        if (h3)
+          h3.className =
+            'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-[#2C2C2E]'
+        if (p)
+          p.className =
+            'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-[#2C2C2E]/80'
+
+        const videoKey = tab.getAttribute('data-videokey')
+        if (videoKey && !videoPlayer.src.includes(videoKey)) {
+          loader.classList.remove('opacity-0')
+          videoPlayer.classList.add('opacity-0')
+          setTimeout(() => {
+            videoPlayer.src = `${VIDEO_BASE_PATH}/${lang}/${videoKey}.mp4`
+            videoPlayer
+              .play()
+              .catch((e) => console.log('Autoplay prevented:', e))
+          }, 300)
+        }
+      })
+    })
+  }
+
+  function init() {
+    setupTabs1()
+    setupTabs2()
+
+    // Initialize lazy loading for the first element in each group
+    const video1 = document.getElementById(
+      'video-player-1'
+    ) as HTMLVideoElement | null
+    const video2 = document.getElementById(
+      'video-player-2'
+    ) as HTMLVideoElement | null
+
+    if (video1) setupLazyVideo(video1, 'features-part-1')
+    if (video2) setupLazyVideo(video2, 'features-part-2')
+  }
+
+  init()
+  document.addEventListener('astro:page-load', init)
+</script>
