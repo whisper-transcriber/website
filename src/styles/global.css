@@ -9,6 +9,10 @@
   --color-brand-dark: #2C2C2E;
   --color-brand-muted: #2C2C2E;
 
+  /* Cream Backgrounds */
+  --color-cream-50: #FAF9F6;
+  --color-cream-100: #F2F0EA;
+
   --radius-3xl: 1.5rem;
   --radius-4xl: 2rem;
 
@@ -27,7 +31,7 @@
   }
 
   body {
-    @apply bg-[#FAF9F6] text-[#2C2C2E] antialiased font-sans;
+    @apply bg-cream-50 text-[#2C2C2E] antialiased font-sans;
   }
 
   h1,
@@ -48,12 +52,12 @@
   }
 
   .btn-brand-secondary {
-    @apply px-8 py-4 rounded-full font-bold transition-all duration-200 bg-[#FAF9F6] text-[#2C2C2E] border-2 border-[#2C2C2E] hover:bg-[#2C2C2E] hover:text-white active:scale-[0.98];
+    @apply px-8 py-4 rounded-full font-bold transition-all duration-200 bg-cream-50 text-[#2C2C2E] border-2 border-[#2C2C2E] hover:bg-[#2C2C2E] hover:text-white active:scale-[0.98];
   }
 
   /* Minimalist Cards */
   .clean-card {
-    @apply bg-[#FAF9F6] border border-[#2C2C2E]/10 shadow-clean rounded-3xl p-8 transition-all duration-300 hover:shadow-clean-hover;
+    @apply bg-cream-50 border border-[#2C2C2E]/10 shadow-clean rounded-3xl p-8 transition-all duration-300 hover:shadow-clean-hover;
   }
 
   .text-highlight {

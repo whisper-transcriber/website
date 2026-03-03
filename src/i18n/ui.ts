@@ -227,7 +227,7 @@ export const ui = {
 
         // Hero
         'hero.badge': '✨ Pressione. Fale. Solte',
-        'hero.title': 'Voz para texto, instantaneamente no seu Mac.',
+        'hero.title': 'Voz para texto, em segundos no seu Mac.',
         'hero.titleHighlight': '',
         'hero.description': 'Pressione uma tecla, fale, solte. O texto é colado em qualquer app. 100% no dispositivo.',
         'hero.download': 'Baixar para macOS',
