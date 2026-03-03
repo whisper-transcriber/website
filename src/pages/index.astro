@@ -36,11 +36,10 @@ import Footer from '../components/Footer.astro'
     <FAQ />
 
     <!-- Minimalist Final CTA -->
-    <section class="py-40 bg-white overflow-hidden">
+    <section class="py-20 lg:py-40 bg-white overflow-hidden">
       <div class="max-w-5xl mx-auto px-6 text-center">
         <h2
-          <h2
-          class="text-6xl md:text-8xl font-black tracking-tight text-[#2C2C2E] mb-10 leading-none"
+          class="text-4xl md:text-6xl lg:text-8xl font-black tracking-tight text-[#2C2C2E] mb-8 md:mb-10 leading-none"
           set:html={t('index.cta.title')}
         >
         </h2>
@@ -51,7 +50,7 @@ import Footer from '../components/Footer.astro'
         </p>
         <a
           href="https://api.whispertranscriber.com/download"
-          class="btn-brand-primary text-xl px-16 py-6 inline-flex items-center justify-center gap-4 shadow-2xl"
+          class="btn-brand-primary w-full sm:w-auto text-lg sm:text-xl px-10 sm:px-16 py-5 sm:py-6 inline-flex items-center justify-center gap-3 sm:gap-4 shadow-2xl"
         >
           <svg
             viewBox="0 0 24 24"

@@ -5,9 +5,11 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<section class="py-24 bg-white overflow-x-auto">
+<section class="py-20 lg:py-24 bg-white overflow-x-auto">
   <div class="max-w-5xl mx-auto px-6">
-    <div class="bg-[#2C2C2E] rounded-[2.5rem] p-1 overflow-hidden shadow-2xl">
+    <div
+      class="bg-[#2C2C2E] rounded-[2rem] lg:rounded-[2.5rem] p-1 overflow-hidden shadow-2xl min-w-[700px] lg:min-w-0"
+    >
       <table class="w-full text-left border-collapse">
         <thead>
           <tr

@@ -55,7 +55,7 @@ const navLinks = [
         >{t('nav.getStarted')}</a
       >
 
-      <button class="md:hidden text-slate-600">
+      <button id="mobile-menu-btn" class="md:hidden text-slate-600">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
@@ -72,4 +72,46 @@ const navLinks = [
       </button>
     </div>
   </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden absolute top-20 left-0 right-0 bg-white border-b border-slate-100 p-6 shadow-lg z-50"
+  >
+    <nav class="flex flex-col gap-6">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-base font-bold text-[#2C2C2E]/80 hover:text-[#2C2C2E] transition-colors mobile-link"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="#"
+        class="text-base font-bold text-[#2C2C2E]/80 hover:text-[#2C2C2E] transition-colors sm:hidden"
+        >{t('nav.login')}</a
+      >
+    </nav>
+  </div>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn')
+  const menu = document.getElementById('mobile-menu')
+  const links = document.querySelectorAll('.mobile-link')
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden')
+    })
+
+    links.forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden')
+      })
+    })
+  }
+</script>

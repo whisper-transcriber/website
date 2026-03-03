@@ -5,18 +5,18 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<section class="py-32 bg-white overflow-x-auto">
+<section class="py-20 lg:py-32 bg-white overflow-x-auto">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-24">
+    <div class="text-center mb-16 lg:mb-24">
       <h2
-        class="text-5xl md:text-7xl font-black text-[#2C2C2E] mb-8 tracking-tight"
+        class="text-4xl md:text-5xl lg:text-7xl font-black text-[#2C2C2E] mb-6 md:mb-8 tracking-tight"
         set:html={t('comp.title')}
       >
       </h2>
     </div>
 
     <div
-      class="bg-white rounded-[2.5rem] border-2 border-[#2C2C2E] overflow-hidden"
+      class="bg-white rounded-[2rem] lg:rounded-[2.5rem] border-2 border-[#2C2C2E] min-w-[700px] lg:min-w-0 overflow-hidden"
     >
       <table class="w-full text-left border-collapse">
         <thead>
