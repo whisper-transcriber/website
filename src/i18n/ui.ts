@@ -65,7 +65,7 @@ export const ui = {
         // How It Works
         'how.title': 'Simple as <span class="opacity-30">1-2-3</span>',
         'how.step1.title': 'Hold',
-        'how.step1.desc': 'Press and hold your configurable hotkey (default: Fn). A floating indicator appears on screen.',
+        'how.step1.desc': 'Press and hold your configurable hotkey. A floating indicator appears on screen.',
         'how.step2.title': 'Speak',
         'how.step2.desc': 'Speak naturally in your language. Audio is recorded locally through your preferred microphone.',
         'how.step3.title': 'Release',
@@ -282,7 +282,7 @@ export const ui = {
         // How It Works
         'how.title': 'Simples como <span class="opacity-30">1-2-3</span>',
         'how.step1.title': 'Pressione',
-        'how.step1.desc': 'Pressione e segure seu atalho configurável (padrão: Fn). Um indicador flutuante aparece na tela.',
+        'how.step1.desc': 'Pressione e segure seu atalho configurável. Um indicador flutuante aparece na tela.',
         'how.step2.title': 'Fale',
         'how.step2.desc': 'Fale naturalmente no seu idioma. O áudio é gravado localmente pelo seu microfone.',
         'how.step3.title': 'Solte',
