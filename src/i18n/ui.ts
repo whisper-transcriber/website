@@ -98,7 +98,7 @@ export const ui = {
         'privacy.table.header2': 'Whisper Transcriber',
         'privacy.table.header3': 'Cloud Competitors',
         'privacy.row1.label': 'Audio Processing',
-        'privacy.row1.whisper': 'On your Mac (Final)',
+        'privacy.row1.whisper': 'On your Mac (Local)',
         'privacy.row1.cloud': 'Remote servers',
         'privacy.row2.label': 'Audio Sent to Servers',
         'privacy.row2.whisper': 'Never',

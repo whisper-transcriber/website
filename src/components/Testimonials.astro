@@ -50,73 +50,40 @@ const allTestimonials = lang === 'pt' ? testimonialsPT : testimonialsEN
     >
     </div>
 
-    <!-- Single Marquee Row -->
-    <div class="flex overflow-hidden w-full group py-4">
-      <!-- Original List -->
-      <div
-        class="flex flex-shrink-0 animate-marquee gap-6 pr-6 min-w-full justify-around group-hover:[animation-play-state:paused]"
-      >
-        {
-          allTestimonials.map((testimonial) => (
-            <div class="w-[300px] md:w-[400px] flex-shrink-0">
-              <div class="clean-card text-left flex flex-col h-full bg-white border-[#2C2C2E]/5 shadow-[0_4px_24px_-12px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)] transition-all duration-300">
-                <p class="text-[#2C2C2E]/80 text-[15px] sm:text-base leading-relaxed mb-6 flex-grow">
-                  "{testimonial.content}"
-                </p>
-                <div class="flex items-center gap-4 mt-auto pt-4 border-t border-[#2C2C2E]/5">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    class="w-10 h-10 rounded-full object-cover bg-cream-100"
-                    loading="lazy"
-                  />
-                  <div>
-                    <h4 class="font-bold text-[#2C2C2E] text-sm">
-                      {testimonial.name}
-                    </h4>
-                    <p class="text-[#2C2C2E]/50 text-xs font-medium">
-                      {testimonial.role}
-                    </p>
-                  </div>
+    <!-- Testimonials Track -->
+    <div
+      id="testimonials-track"
+      class="flex overflow-x-auto w-full group py-4 gap-6 px-6 cursor-grab select-none [&::-webkit-scrollbar]:hidden"
+      style="scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch;"
+    >
+      {
+        [...allTestimonials, ...allTestimonials].map((testimonial) => (
+          <div class="w-[300px] md:w-[400px] flex-shrink-0 select-none pointer-events-none">
+            <div class="clean-card text-left flex flex-col h-full bg-white border-[#2C2C2E]/5 shadow-[0_4px_24px_-12px_rgba(0,0,0,0.06)] transition-all duration-300 pointer-events-auto">
+              <p class="text-[#2C2C2E]/80 text-[15px] sm:text-base leading-relaxed mb-6 flex-grow">
+                "{testimonial.content}"
+              </p>
+              <div class="flex items-center gap-4 mt-auto pt-4 border-t border-[#2C2C2E]/5">
+                <img
+                  src={testimonial.avatar}
+                  alt={testimonial.name}
+                  class="w-10 h-10 rounded-full object-cover bg-cream-100"
+                  loading="lazy"
+                  draggable="false"
+                />
+                <div>
+                  <h4 class="font-bold text-[#2C2C2E] text-sm">
+                    {testimonial.name}
+                  </h4>
+                  <p class="text-[#2C2C2E]/50 text-xs font-medium">
+                    {testimonial.role}
+                  </p>
                 </div>
               </div>
             </div>
-          ))
-        }
-      </div>
-      <!-- Duplicated List -->
-      <div
-        class="flex flex-shrink-0 animate-marquee gap-6 pr-6 min-w-full justify-around group-hover:[animation-play-state:paused]"
-        aria-hidden="true"
-      >
-        {
-          allTestimonials.map((testimonial) => (
-            <div class="w-[300px] md:w-[400px] flex-shrink-0">
-              <div class="clean-card text-left flex flex-col h-full bg-white border-[#2C2C2E]/5 shadow-[0_4px_24px_-12px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)] transition-all duration-300">
-                <p class="text-[#2C2C2E]/80 text-[15px] sm:text-base leading-relaxed mb-6 flex-grow">
-                  "{testimonial.content}"
-                </p>
-                <div class="flex items-center gap-4 mt-auto pt-4 border-t border-[#2C2C2E]/5">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    class="w-10 h-10 rounded-full object-cover bg-cream-100"
-                    loading="lazy"
-                  />
-                  <div>
-                    <h4 class="font-bold text-[#2C2C2E] text-sm">
-                      {testimonial.name}
-                    </h4>
-                    <p class="text-[#2C2C2E]/50 text-xs font-medium">
-                      {testimonial.role}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
+          </div>
+        ))
+      }
     </div>
 
     <!-- Right Fade Gradient -->
@@ -126,3 +93,114 @@ const allTestimonials = lang === 'pt' ? testimonialsPT : testimonialsEN
     </div>
   </div>
 </section>
+
+<script>
+  function initTestimonials() {
+    const track = document.getElementById('testimonials-track') as HTMLElement
+    if (!track) return
+    if (track.hasAttribute('data-initialized')) return
+    track.setAttribute('data-initialized', 'true')
+
+    const items = track.children
+    const halfCount = Math.floor(items.length / 2)
+    if (halfCount === 0) return
+
+    let isDown = false
+    let startX = 0
+    let scrollLeft = 0
+    let isHovered = false
+    let lastTime = 0
+    let autoScrollSpeed = 60 // px per second
+
+    // Auto-scroll loop using requestAnimationFrame for 60fps smoothness
+    function autoScroll(timestamp: number) {
+      if (!lastTime) lastTime = timestamp
+      const deltaTime = timestamp - lastTime
+      lastTime = timestamp
+
+      // Only animate if the user isn't hovering or dragging
+      if (!isDown && !isHovered) {
+        track.scrollLeft += (autoScrollSpeed / 1000) * deltaTime
+      }
+
+      checkInfiniteScroll()
+      requestAnimationFrame(autoScroll)
+    }
+
+    // Keep it infinite natively
+    function checkInfiniteScroll() {
+      if (!items[halfCount] || !items[0]) return
+
+      const halfEl = items[halfCount] as HTMLElement
+      const firstEl = items[0] as HTMLElement
+      // Calculate exact halfway position preserving dynamic gaps
+      const halfwayPoint = halfEl.offsetLeft - firstEl.offsetLeft
+
+      if (track.scrollLeft >= halfwayPoint) {
+        track.scrollLeft -= halfwayPoint // Reset seamless
+      } else if (track.scrollLeft <= 0) {
+        // If they drag heavily to the left past the start, jump to midway
+        track.scrollLeft += halfwayPoint
+      }
+    }
+
+    // --- MOUSE DRAG LOGIC ---
+    track.addEventListener('mousedown', (e) => {
+      isDown = true
+      track.classList.add('cursor-grabbing')
+      startX = e.pageX - track.offsetLeft
+      scrollLeft = track.scrollLeft
+    })
+
+    track.addEventListener('mouseleave', () => {
+      isDown = false
+      isHovered = false
+      track.classList.remove('cursor-grabbing')
+    })
+
+    track.addEventListener('mouseup', () => {
+      isDown = false
+      track.classList.remove('cursor-grabbing')
+    })
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return
+      e.preventDefault() // Prevents image/text native browser dragging behavior
+      const x = e.pageX - track.offsetLeft
+      // Multiplier increases manual scroll speed
+      const walk = (x - startX) * 2 // Increased drag multiplier to 2 for better feel
+      track.scrollLeft = scrollLeft - walk
+    })
+
+    // --- HOVER PAUSE ---
+    track.addEventListener('mouseenter', () => {
+      isHovered = true
+    })
+
+    // --- NATIVE TOUCH ---
+    // Touch device users rely on native overflow scroll.
+    // We bind a scroll listener to monitor bounds.
+    track.addEventListener('scroll', () => {
+      if (!isDown) {
+        // Prevent check collision with manual mouse move
+        checkInfiniteScroll()
+      }
+    })
+
+    // Start auto scroll
+    requestAnimationFrame(autoScroll)
+  }
+
+  // Bind to Astro's view transitions or standard load
+  document.addEventListener('astro:page-load', initTestimonials)
+
+  // Also run immediately just in case (Astro sometimes needs this for first load)
+  if (
+    document.readyState === 'complete' ||
+    document.readyState === 'interactive'
+  ) {
+    initTestimonials()
+  } else {
+    document.addEventListener('DOMContentLoaded', initTestimonials)
+  }
+</script>

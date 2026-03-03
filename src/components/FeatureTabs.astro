@@ -150,7 +150,7 @@ const VIDEO_BASE_PATH = '/videos'
       <!-- Video Display (Right) -->
       <div class="w-full lg:w-7/12 mt-8 lg:mt-0 relative">
         <div
-          class="relative w-full aspect-square rounded-3xl overflow-hidden border border-[#2C2C2E]/10 shadow-2xl bg-[#F2F0EA] flex items-center justify-center group/video"
+          class="relative w-full aspect-square rounded-3xl overflow-hidden border border-[#2C2C2E]/10 shadow-2xl bg-[#F2F0EA] group/video"
         >
           <!-- Loading state placeholder -->
           <div
@@ -170,7 +170,7 @@ const VIDEO_BASE_PATH = '/videos'
             loop
             muted
             playsinline
-            class="absolute inset-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-500"
+            class="absolute top-0 left-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-500"
             onloadeddata="this.classList.remove('opacity-0'); document.getElementById('video-loader-1').classList.add('opacity-0');"
           ></video>
 
@@ -205,7 +205,7 @@ const VIDEO_BASE_PATH = '/videos'
       <!-- Video Display (Left) -->
       <div class="w-full lg:w-7/12 mt-8 lg:mt-0 relative flex-shrink-0">
         <div
-          class="relative w-full aspect-square rounded-3xl overflow-hidden border border-[#2C2C2E]/10 shadow-2xl bg-[#F2F0EA] flex items-center justify-center group/video"
+          class="relative w-full aspect-square rounded-3xl overflow-hidden border border-[#2C2C2E]/10 shadow-2xl bg-[#F2F0EA] group/video"
         >
           <!-- Loading loader -->
           <div
@@ -225,7 +225,7 @@ const VIDEO_BASE_PATH = '/videos'
             loop
             muted
             playsinline
-            class="absolute inset-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-500"
+            class="absolute top-0 left-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-500"
             onloadeddata="this.classList.remove('opacity-0'); document.getElementById('video-loader-2').classList.add('opacity-0');"
           ></video>
 
