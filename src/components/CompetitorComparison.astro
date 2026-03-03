@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <section class="py-32 bg-white overflow-x-auto">
@@ -6,8 +10,8 @@
     <div class="text-center mb-24">
       <h2
         class="text-5xl md:text-7xl font-black text-[#2C2C2E] mb-8 tracking-tight"
+        set:html={t('comp.title')}
       >
-        Why <span class="opacity-30">Whisper Transcriber?</span>
       </h2>
     </div>
 
@@ -19,57 +23,61 @@
           <tr
             class="bg-[#2C2C2E] text-white text-[10px] font-black uppercase tracking-widest"
           >
-            <th class="px-8 py-6">Feature</th>
-            <th class="px-8 py-6">Whisper Transcriber</th>
-            <th class="px-8 py-6 font-medium opacity-50">Competitors</th>
-            <th class="px-8 py-6 font-medium opacity-50">Apple Dictation</th>
+            <th class="px-8 py-6">{t('comp.table.header1')}</th>
+            <th class="px-8 py-6">{t('comp.table.header2')}</th>
+            <th class="px-8 py-6 font-medium opacity-50"
+              >{t('comp.table.header3')}</th
+            >
+            <th class="px-8 py-6 font-medium opacity-50"
+              >{t('comp.table.header4')}</th
+            >
           </tr>
         </thead>
         <tbody class="text-[#2C2C2E] font-bold text-sm">
           <tr class="border-b border-[#2C2C2E]/5">
             <td
               class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
-              >Processing</td
+              >{t('comp.row1.label')}</td
             >
-            <td class="px-8 py-6">100% Local</td>
-            <td class="px-8 py-6 opacity-40">Cloud</td>
-            <td class="px-8 py-6 opacity-40">Local (Limited)</td>
+            <td class="px-8 py-6">{t('comp.row1.whisper')}</td>
+            <td class="px-8 py-6 opacity-40">{t('comp.row1.comp')}</td>
+            <td class="px-8 py-6 opacity-40">{t('comp.row1.apple')}</td>
           </tr>
           <tr class="border-b border-[#2C2C2E]/5">
             <td
               class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
-              >Pricing</td
+              >{t('comp.row2.label')}</td
             >
-            <td class="px-8 py-6">One-time payment</td>
-            <td class="px-8 py-6 opacity-40">$12–25/mo</td>
-            <td class="px-8 py-6 opacity-40">Free</td>
+            <td class="px-8 py-6">{t('comp.row2.whisper')}</td>
+            <td class="px-8 py-6 opacity-40">{t('comp.row2.comp')}</td>
+            <td class="px-8 py-6 opacity-40">{t('comp.row2.apple')}</td>
           </tr>
           <tr class="border-b border-[#2C2C2E]/5">
             <td
               class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
-              >Privacy</td
+              >{t('comp.row3.label')}</td
             >
-            <td class="px-8 py-6 text-green-600">Total Privacy</td>
-            <td class="px-8 py-6 opacity-40 italic">Data in cloud</td>
-            <td class="px-8 py-6 opacity-40">Partial</td>
+            <td class="px-8 py-6 text-green-600">{t('comp.row3.whisper')}</td>
+            <td class="px-8 py-6 opacity-40 italic">{t('comp.row3.comp')}</td>
+            <td class="px-8 py-6 opacity-40">{t('comp.row3.apple')}</td>
           </tr>
           <tr class="border-b border-[#2C2C2E]/5">
             <td
               class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
-              >Languages</td
+              >{t('comp.row4.label')}</td
             >
-            <td class="px-8 py-6">99 (High Accuracy)</td>
-            <td class="px-8 py-6 opacity-40">Varies</td>
-            <td class="px-8 py-6 opacity-40">~60</td>
+            <td class="px-8 py-6">{t('comp.row4.whisper')}</td>
+            <td class="px-8 py-6 opacity-40">{t('comp.row4.comp')}</td>
+            <td class="px-8 py-6 opacity-40">{t('comp.row4.apple')}</td>
           </tr>
           <tr>
             <td
               class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
-              >Limits</td
+              >{t('comp.row5.label')}</td
             >
-            <td class="px-8 py-6">Unlimited</td>
-            <td class="px-8 py-6 opacity-40">Monthly caps</td>
-            <td class="px-8 py-6 opacity-40">Unclear</td>
+            <td class="px-8 py-6">{t('comp.row5.whisper')}</td>
+            <td class="px-8 py-6 opacity-40">{t('comp.row5.comp')}</td>
+            <td class="px-8 py-6 opacity-40">{t('comp.row5.apple')}</td>
           </tr>
         </tbody>
       </table>

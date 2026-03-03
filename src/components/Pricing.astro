@@ -1,32 +1,39 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
 const plans = [
   {
-    name: 'Free Trial',
-    price: '0',
-    description: 'Try all features for 3 days. No credit card required.',
+    name: t('pricing.free.name'),
+    price: t('pricing.free.price'),
+    description: t('pricing.free.desc'),
     features: [
-      '3 days of full access',
-      'All features unlocked',
-      'Native Apple Silicon app',
-      '99 languages support',
-      'Local AI processing',
+      t('pricing.free.feat1'),
+      t('pricing.free.feat2'),
+      t('pricing.free.feat3'),
+      t('pricing.free.feat4'),
+      t('pricing.free.feat5'),
     ],
-    cta: 'Start free trial',
+    cta: t('pricing.free.cta'),
     highlight: false,
+    badge: '',
   },
   {
-    name: 'Lifetime License',
-    price: '29', // Example price, adjustment may be needed
-    description: 'One-time payment. All features included forever.',
+    name: t('pricing.paid.name'),
+    price: t('pricing.paid.price'),
+    description: t('pricing.paid.desc'),
     features: [
-      'Lifetime updates',
-      'Priority email support',
-      'All AI models included',
-      'Unlimited usage',
-      'No recurring fees',
+      t('pricing.paid.feat1'),
+      t('pricing.paid.feat2'),
+      t('pricing.paid.feat3'),
+      t('pricing.paid.feat4'),
+      t('pricing.paid.feat5'),
     ],
-    cta: 'Get lifetime access',
+    cta: t('pricing.paid.cta'),
     highlight: true,
+    badge: t('pricing.paid.badge'),
   },
 ]
 ---
@@ -36,11 +43,11 @@ const plans = [
     <div class="text-center mb-20">
       <h2
         class="text-5xl md:text-7xl font-black text-[#2C2C2E] mb-6 tracking-tight"
+        set:html={t('pricing.title')}
       >
-        One price. <span class="opacity-30">Forever.</span>
       </h2>
       <p class="text-xl text-[#2C2C2E]/60 font-medium max-w-2xl mx-auto">
-        No subscriptions. No cloud costs. Just a powerful tool you own for life.
+        {t('pricing.desc')}
       </p>
     </div>
 
@@ -65,7 +72,7 @@ const plans = [
                     plan.highlight ? 'text-white/40' : 'text-[#2C2C2E]/40'
                   }`}
                 >
-                  one-time
+                  {plan.badge}
                 </span>
               )}
             </div>
@@ -117,11 +124,10 @@ const plans = [
       class="max-w-3xl mx-auto text-center p-12 bg-[#2C2C2E]/5 rounded-[2.5rem] border border-[#2C2C2E]/5"
     >
       <h4 class="text-2xl font-black text-[#2C2C2E] mb-4 tracking-tight">
-        Why avoid subscriptions?
+        {t('pricing.why.title')}
       </h4>
       <p class="text-[#2C2C2E]/60 font-medium leading-relaxed">
-        Competitors cost $12–15/month ($144–$180/year). With Whisper
-        Transcriber, you pay once and use it forever. It's yours.
+        {t('pricing.why.desc')}
       </p>
     </div>
   </div>

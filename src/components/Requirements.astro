@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <section class="py-32 bg-slate-50">
@@ -7,34 +11,21 @@
       <!-- System Requirements -->
       <div>
         <h2 class="text-4xl font-black text-[#2C2C2E] mb-12 tracking-tight">
-          System Requirements
+          {t('req.sys.title')}
         </h2>
         <div class="space-y-6">
           <div class="flex items-start gap-4">
             <div
               class="w-10 h-10 rounded-xl bg-white flex items-center justify-center shrink-0 shadow-sm border border-[#2C2C2E]/5"
             >
-              <span class="font-black text-sm">OS</span>
+              <span class="font-black text-sm">{t('req.sys.os.label')}</span>
             </div>
             <div>
               <p class="font-bold text-[#2C2C2E]">
-                macOS 14.0 (Sonoma) or later
+                {t('req.sys.os.value')}
               </p>
               <p class="text-sm text-[#2C2C2E]/60">
-                Built for the latest macOS features.
-              </p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div
-              class="w-10 h-10 rounded-xl bg-white flex items-center justify-center shrink-0 shadow-sm border border-[#2C2C2E]/5"
-            >
-              <span class="font-black text-sm">CPU</span>
-            </div>
-            <div>
-              <p class="font-bold text-[#2C2C2E]">Apple Silicon Required</p>
-              <p class="text-sm text-[#2C2C2E]/60">
-                Requires M1, M2, M3, or M4 chips for local AI.
+                {t('req.sys.os.desc')}
               </p>
             </div>
           </div>
@@ -42,12 +33,25 @@
             <div
               class="w-10 h-10 rounded-xl bg-white flex items-center justify-center shrink-0 shadow-sm border border-[#2C2C2E]/5"
             >
-              <span class="font-black text-sm">RAM</span>
+              <span class="font-black text-sm">{t('req.sys.cpu.label')}</span>
             </div>
             <div>
-              <p class="font-bold text-[#2C2C2E]">500 MB – 1.5 GB Free</p>
+              <p class="font-bold text-[#2C2C2E]">{t('req.sys.cpu.value')}</p>
               <p class="text-sm text-[#2C2C2E]/60">
-                Depending on the chosen model accuracy.
+                {t('req.sys.cpu.desc')}
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div
+              class="w-10 h-10 rounded-xl bg-white flex items-center justify-center shrink-0 shadow-sm border border-[#2C2C2E]/5"
+            >
+              <span class="font-black text-sm">{t('req.sys.ram.label')}</span>
+            </div>
+            <div>
+              <p class="font-bold text-[#2C2C2E]">{t('req.sys.ram.value')}</p>
+              <p class="text-sm text-[#2C2C2E]/60">
+                {t('req.sys.ram.desc')}
               </p>
             </div>
           </div>
@@ -57,7 +61,7 @@
       <!-- Permissions -->
       <div>
         <h2 class="text-4xl font-black text-[#2C2C2E] mb-12 tracking-tight">
-          Three Permissions
+          {t('req.perm.title')}
         </h2>
         <div
           class="bg-white rounded-[2.5rem] p-10 border border-[#2C2C2E]/5 shadow-sm"
@@ -66,39 +70,38 @@
             <li class="flex items-center justify-between">
               <div class="flex items-center gap-4">
                 <div class="w-2 h-2 rounded-full bg-green-500"></div>
-                <span class="font-bold">Microphone</span>
+                <span class="font-bold">{t('req.perm.mic')}</span>
               </div>
               <span
                 class="text-xs font-black uppercase text-[#2C2C2E]/30 tracking-widest"
-                >To Record</span
+                >{t('req.perm.mic.desc')}</span
               >
             </li>
             <li class="flex items-center justify-between">
               <div class="flex items-center gap-4">
                 <div class="w-2 h-2 rounded-full bg-green-500"></div>
-                <span class="font-bold">Accessibility</span>
+                <span class="font-bold">{t('req.perm.acc')}</span>
               </div>
               <span
                 class="text-xs font-black uppercase text-[#2C2C2E]/30 tracking-widest"
-                >To Paste</span
+                >{t('req.perm.acc.desc')}</span
               >
             </li>
             <li class="flex items-center justify-between">
               <div class="flex items-center gap-4">
                 <div class="w-2 h-2 rounded-full bg-green-500"></div>
-                <span class="font-bold">Input Monitoring</span>
+                <span class="font-bold">{t('req.perm.monitor')}</span>
               </div>
               <span
                 class="text-xs font-black uppercase text-[#2C2C2E]/30 tracking-widest"
-                >To Listen</span
+                >{t('req.perm.monitor.desc')}</span
               >
             </li>
           </ul>
           <div
             class="mt-8 pt-8 border-t border-[#2C2C2E]/5 text-sm text-[#2C2C2E]/40 font-medium italic"
           >
-            "Zero cloud concerns. We only ask for what's needed to run natively
-            on your Mac."
+            {t('req.perm.quote')}
           </div>
         </div>
       </div>

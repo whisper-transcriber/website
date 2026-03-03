@@ -1,34 +1,33 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
 const audiences = [
   {
-    title: 'Developers',
-    description:
-      'Dictate prompts for AI, write comments, PRs, and docs. Keep your focus on the logic.',
+    title: t('who.devs.title'),
+    description: t('who.devs.desc'),
   },
   {
-    title: 'Writers & Creators',
-    description:
-      'Capture ideas at the speed of thought. Dictate drafts and scripts effortlessly.',
+    title: t('who.writers.title'),
+    description: t('who.writers.desc'),
   },
   {
-    title: 'Professionals',
-    description:
-      'Emails, Slack, and reports—all 4x faster. Speak naturally and the text appears.',
+    title: t('who.professionals.title'),
+    description: t('who.professionals.desc'),
   },
   {
-    title: 'Students',
-    description:
-      'Take quick notes during lectures and transcribe thoughts for academic papers.',
+    title: t('who.students.title'),
+    description: t('who.students.desc'),
   },
   {
-    title: 'Accessibility',
-    description:
-      'Turn your voice into text effortlessly if typing is a struggle due to RSI or motor conditions.',
+    title: t('who.accessibility.title'),
+    description: t('who.accessibility.desc'),
   },
   {
-    title: 'Multilingual Users',
-    description:
-      'Switch between 99 languages with one click. Perfect for international teams.',
+    title: t('who.multilingual.title'),
+    description: t('who.multilingual.desc'),
   },
 ]
 ---
@@ -38,8 +37,8 @@ const audiences = [
     <div class="text-center mb-24">
       <h2
         class="text-5xl md:text-7xl font-black text-[#2C2C2E] mb-8 tracking-tight"
+        set:html={t('who.title')}
       >
-        Built for <br /><span class="opacity-30">builders and thinkers.</span>
       </h2>
     </div>
 

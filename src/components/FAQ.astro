@@ -1,34 +1,33 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
 const faqs = [
   {
-    question: 'How does it work?',
-    answer:
-      'Hold a hotkey, speak, release. Your audio is transcribed locally on your Mac using AI (Whisper models) and the text is automatically pasted into the frontmost app.',
+    question: t('faq.q1'),
+    answer: t('faq.a1'),
   },
   {
-    question: 'Does it require internet?',
-    answer:
-      'No. After downloading the AI model once (142–574 MB), everything works 100% offline.',
+    question: t('faq.q2'),
+    answer: t('faq.a2'),
   },
   {
-    question: 'Is my data sent to any server?',
-    answer:
-      'Never. All processing happens locally on your Mac. The temporary audio file is deleted immediately after transcription.',
+    question: t('faq.q3'),
+    answer: t('faq.a3'),
   },
   {
-    question: 'Which languages are supported?',
-    answer:
-      '99 languages, including English, Spanish, Portuguese, French, German, Japanese, Chinese, and many more. You can select manually or use auto-detection.',
+    question: t('faq.q4'),
+    answer: t('faq.a4'),
   },
   {
-    question: 'Does it work with any app?',
-    answer:
-      'Yes. Whisper Transcriber uses the macOS Accessibility API to paste text into any app that has a Paste function — text editors, email, Slack, browsers, terminals, and more.',
+    question: t('faq.q5'),
+    answer: t('faq.a5'),
   },
   {
-    question: 'Is it compatible with Intel Macs?',
-    answer:
-      'No. Whisper Transcriber requires Apple Silicon (M1 or later) to run AI models locally via CoreML and Apple Neural Engine.',
+    question: t('faq.q6'),
+    answer: t('faq.a6'),
   },
 ]
 ---
@@ -38,8 +37,8 @@ const faqs = [
     <div class="mb-24">
       <h2
         class="text-5xl md:text-7xl font-black text-[#2C2C2E] mb-8 tracking-tight"
+        set:html={t('faq.title')}
       >
-        Common <br /><span class="opacity-30">questions.</span>
       </h2>
     </div>
 
@@ -63,10 +62,10 @@ const faqs = [
       class="mt-40 p-12 bg-slate-50 rounded-[2.5rem] border border-[#2C2C2E]/5 text-center"
     >
       <h3 class="text-3xl font-black text-[#2C2C2E] mb-6 tracking-tight">
-        Need more help?
+        {t('faq.support.title')}
       </h3>
       <p class="text-[#2C2C2E]/60 font-medium mb-10">
-        We respond to all support emails within 24 hours.
+        {t('faq.support.desc')}
       </p>
       <a
         href="mailto:help@whispertranscriber.com"

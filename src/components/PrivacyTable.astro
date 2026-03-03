@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <section class="py-32 bg-slate-50">
@@ -6,12 +10,11 @@
     <div class="max-w-2xl mb-24">
       <h2
         class="text-5xl md:text-7xl font-black text-[#2C2C2E] mb-8 tracking-tight"
+        set:html={t('privacy.title')}
       >
-        Designed for <br /><span class="opacity-50">privacy from day one.</span>
       </h2>
       <p class="text-xl text-[#2C2C2E]/60 font-medium leading-relaxed">
-        Your voice is personal. We treat it that way. Recorded audio is
-        transcribed locally and deleted immediately after.
+        {t('privacy.desc')}
       </p>
     </div>
 
@@ -23,51 +26,55 @@
           <tr
             class="bg-[#2C2C2E]/5 text-[10px] font-black uppercase tracking-widest text-[#2C2C2E]/40"
           >
-            <th class="px-8 py-6">Security Check</th>
-            <th class="px-8 py-6 text-[#2C2C2E]">Whisper Transcriber</th>
-            <th class="px-8 py-6">Cloud Competitors</th>
+            <th class="px-8 py-6">{t('privacy.table.header1')}</th>
+            <th class="px-8 py-6 text-[#2C2C2E]"
+              >{t('privacy.table.header2')}</th
+            >
+            <th class="px-8 py-6">{t('privacy.table.header3')}</th>
           </tr>
         </thead>
         <tbody class="text-[#2C2C2E] font-bold text-base">
           <tr class="border-t border-[#2C2C2E]/5">
             <td
               class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px] tracking-widest"
-              >Audio Processing</td
+              >{t('privacy.row1.label')}</td
             >
-            <td class="px-8 py-6">On your Mac (Final)</td>
-            <td class="px-8 py-6 opacity-40">Remote servers</td>
+            <td class="px-8 py-6">{t('privacy.row1.whisper')}</td>
+            <td class="px-8 py-6 opacity-40">{t('privacy.row1.cloud')}</td>
           </tr>
           <tr class="border-t border-[#2C2C2E]/5">
             <td
               class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px] tracking-widest"
-              >Audio Sent to Servers</td
+              >{t('privacy.row2.label')}</td
             >
-            <td class="px-8 py-6 text-green-600">Never</td>
-            <td class="px-8 py-6 opacity-40">Yes (Every time)</td>
+            <td class="px-8 py-6 text-green-600">{t('privacy.row2.whisper')}</td
+            >
+            <td class="px-8 py-6 opacity-40">{t('privacy.row2.cloud')}</td>
           </tr>
           <tr class="border-t border-[#2C2C2E]/5">
             <td
               class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px] tracking-widest"
-              >Works Offline</td
+              >{t('privacy.row3.label')}</td
             >
-            <td class="px-8 py-6">Yes, 100%</td>
-            <td class="px-8 py-6 opacity-40">No</td>
+            <td class="px-8 py-6">{t('privacy.row3.whisper')}</td>
+            <td class="px-8 py-6 opacity-40">{t('privacy.row3.cloud')}</td>
           </tr>
           <tr class="border-t border-[#2C2C2E]/5">
             <td
               class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px] tracking-widest"
-              >Training on Data</td
+              >{t('privacy.row4.label')}</td
             >
-            <td class="px-8 py-6 text-green-600">Never</td>
-            <td class="px-8 py-6 opacity-40">Possibly</td>
+            <td class="px-8 py-6 text-green-600">{t('privacy.row4.whisper')}</td
+            >
+            <td class="px-8 py-6 opacity-40">{t('privacy.row4.cloud')}</td>
           </tr>
           <tr class="border-t border-[#2C2C2E]/5">
             <td
               class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px] tracking-widest"
-              >Storage</td
+              >{t('privacy.row5.label')}</td
             >
-            <td class="px-8 py-6">Temporary (Auto-delete)</td>
-            <td class="px-8 py-6 opacity-40">Indefinite</td>
+            <td class="px-8 py-6">{t('privacy.row5.whisper')}</td>
+            <td class="px-8 py-6 opacity-40">{t('privacy.row5.cloud')}</td>
           </tr>
         </tbody>
       </table>
@@ -75,8 +82,7 @@
 
     <div class="mt-12 text-center p-8 rounded-3xl bg-[#2C2C2E] text-white">
       <p class="text-xl font-bold tracking-tight">
-        "While others process audio in the cloud, we process everything on your
-        Mac's chip."
+        {t('privacy.quote')}
       </p>
     </div>
   </div>
