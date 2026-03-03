@@ -5,7 +5,7 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<section class="py-20 lg:py-32 bg-white overflow-x-auto">
+<section class="py-20 lg:py-32 bg-[#FAF9F6]">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-16 lg:mb-24">
       <h2
@@ -15,72 +15,74 @@ const t = useTranslations(lang)
       </h2>
     </div>
 
-    <div
-      class="bg-white rounded-[2rem] lg:rounded-[2.5rem] border-2 border-[#2C2C2E] min-w-[700px] lg:min-w-0 overflow-hidden"
-    >
-      <table class="w-full text-left border-collapse">
-        <thead>
-          <tr
-            class="bg-[#2C2C2E] text-white text-[10px] font-black uppercase tracking-widest"
-          >
-            <th class="px-8 py-6">{t('comp.table.header1')}</th>
-            <th class="px-8 py-6">{t('comp.table.header2')}</th>
-            <th class="px-8 py-6 font-medium opacity-50"
-              >{t('comp.table.header3')}</th
+    <div class="w-full overflow-x-auto pb-4 -mb-4">
+      <div
+        class="bg-[#FAF9F6] rounded-[2rem] lg:rounded-[2.5rem] border-2 border-[#2C2C2E] min-w-[700px] lg:min-w-full overflow-hidden"
+      >
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr
+              class="bg-[#2C2C2E] text-white text-[10px] font-black uppercase tracking-widest"
             >
-            <th class="px-8 py-6 font-medium opacity-50"
-              >{t('comp.table.header4')}</th
-            >
-          </tr>
-        </thead>
-        <tbody class="text-[#2C2C2E] font-bold text-sm">
-          <tr class="border-b border-[#2C2C2E]/5">
-            <td
-              class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
-              >{t('comp.row1.label')}</td
-            >
-            <td class="px-8 py-6">{t('comp.row1.whisper')}</td>
-            <td class="px-8 py-6 opacity-40">{t('comp.row1.comp')}</td>
-            <td class="px-8 py-6 opacity-40">{t('comp.row1.apple')}</td>
-          </tr>
-          <tr class="border-b border-[#2C2C2E]/5">
-            <td
-              class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
-              >{t('comp.row2.label')}</td
-            >
-            <td class="px-8 py-6">{t('comp.row2.whisper')}</td>
-            <td class="px-8 py-6 opacity-40">{t('comp.row2.comp')}</td>
-            <td class="px-8 py-6 opacity-40">{t('comp.row2.apple')}</td>
-          </tr>
-          <tr class="border-b border-[#2C2C2E]/5">
-            <td
-              class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
-              >{t('comp.row3.label')}</td
-            >
-            <td class="px-8 py-6 text-green-600">{t('comp.row3.whisper')}</td>
-            <td class="px-8 py-6 opacity-40 italic">{t('comp.row3.comp')}</td>
-            <td class="px-8 py-6 opacity-40">{t('comp.row3.apple')}</td>
-          </tr>
-          <tr class="border-b border-[#2C2C2E]/5">
-            <td
-              class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
-              >{t('comp.row4.label')}</td
-            >
-            <td class="px-8 py-6">{t('comp.row4.whisper')}</td>
-            <td class="px-8 py-6 opacity-40">{t('comp.row4.comp')}</td>
-            <td class="px-8 py-6 opacity-40">{t('comp.row4.apple')}</td>
-          </tr>
-          <tr>
-            <td
-              class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
-              >{t('comp.row5.label')}</td
-            >
-            <td class="px-8 py-6">{t('comp.row5.whisper')}</td>
-            <td class="px-8 py-6 opacity-40">{t('comp.row5.comp')}</td>
-            <td class="px-8 py-6 opacity-40">{t('comp.row5.apple')}</td>
-          </tr>
-        </tbody>
-      </table>
+              <th class="px-8 py-6">{t('comp.table.header1')}</th>
+              <th class="px-8 py-6">{t('comp.table.header2')}</th>
+              <th class="px-8 py-6 font-medium opacity-50"
+                >{t('comp.table.header3')}</th
+              >
+              <th class="px-8 py-6 font-medium opacity-50"
+                >{t('comp.table.header4')}</th
+              >
+            </tr>
+          </thead>
+          <tbody class="text-[#2C2C2E] font-bold text-sm">
+            <tr class="border-b border-[#2C2C2E]/5">
+              <td
+                class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
+                >{t('comp.row1.label')}</td
+              >
+              <td class="px-8 py-6">{t('comp.row1.whisper')}</td>
+              <td class="px-8 py-6 opacity-40">{t('comp.row1.comp')}</td>
+              <td class="px-8 py-6 opacity-40">{t('comp.row1.apple')}</td>
+            </tr>
+            <tr class="border-b border-[#2C2C2E]/5">
+              <td
+                class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
+                >{t('comp.row2.label')}</td
+              >
+              <td class="px-8 py-6">{t('comp.row2.whisper')}</td>
+              <td class="px-8 py-6 opacity-40">{t('comp.row2.comp')}</td>
+              <td class="px-8 py-6 opacity-40">{t('comp.row2.apple')}</td>
+            </tr>
+            <tr class="border-b border-[#2C2C2E]/5">
+              <td
+                class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
+                >{t('comp.row3.label')}</td
+              >
+              <td class="px-8 py-6 text-green-600">{t('comp.row3.whisper')}</td>
+              <td class="px-8 py-6 opacity-40 italic">{t('comp.row3.comp')}</td>
+              <td class="px-8 py-6 opacity-40">{t('comp.row3.apple')}</td>
+            </tr>
+            <tr class="border-b border-[#2C2C2E]/5">
+              <td
+                class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
+                >{t('comp.row4.label')}</td
+              >
+              <td class="px-8 py-6">{t('comp.row4.whisper')}</td>
+              <td class="px-8 py-6 opacity-40">{t('comp.row4.comp')}</td>
+              <td class="px-8 py-6 opacity-40">{t('comp.row4.apple')}</td>
+            </tr>
+            <tr>
+              <td
+                class="px-8 py-6 text-[#2C2C2E]/40 font-black uppercase text-[10px]"
+                >{t('comp.row5.label')}</td
+              >
+              <td class="px-8 py-6">{t('comp.row5.whisper')}</td>
+              <td class="px-8 py-6 opacity-40">{t('comp.row5.comp')}</td>
+              <td class="px-8 py-6 opacity-40">{t('comp.row5.apple')}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>

@@ -11,8 +11,7 @@ export const ui = {
         'nav.features': 'Features',
         'nav.pricing': 'Pricing',
         'nav.faq': 'FAQ',
-        'nav.login': 'Log in',
-        'nav.getStarted': 'Get Started',
+        'nav.getStarted': 'Download',
 
         // Hero
         'hero.badge': '✨ Hold. Speak. Release',
@@ -224,8 +223,7 @@ export const ui = {
         'nav.features': 'Recursos',
         'nav.pricing': 'Preços',
         'nav.faq': 'FAQ',
-        'nav.login': 'Entrar',
-        'nav.getStarted': 'Começar',
+        'nav.getStarted': 'Baixar',
 
         // Hero
         'hero.badge': '✨ Pressione. Fale. Solte',

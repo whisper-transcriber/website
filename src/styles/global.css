@@ -27,7 +27,7 @@
   }
 
   body {
-    @apply bg-white text-[#2C2C2E] antialiased font-sans;
+    @apply bg-[#FAF9F6] text-[#2C2C2E] antialiased font-sans;
   }
 
   h1,
@@ -48,12 +48,12 @@
   }
 
   .btn-brand-secondary {
-    @apply px-8 py-4 rounded-full font-bold transition-all duration-200 bg-white text-[#2C2C2E] border-2 border-[#2C2C2E] hover:bg-[#2C2C2E] hover:text-white active:scale-[0.98];
+    @apply px-8 py-4 rounded-full font-bold transition-all duration-200 bg-[#FAF9F6] text-[#2C2C2E] border-2 border-[#2C2C2E] hover:bg-[#2C2C2E] hover:text-white active:scale-[0.98];
   }
 
   /* Minimalist Cards */
   .clean-card {
-    @apply bg-white border border-[#2C2C2E]/10 shadow-clean rounded-3xl p-8 transition-all duration-300 hover:shadow-clean-hover;
+    @apply bg-[#FAF9F6] border border-[#2C2C2E]/10 shadow-clean rounded-3xl p-8 transition-all duration-300 hover:shadow-clean-hover;
   }
 
   .text-highlight {

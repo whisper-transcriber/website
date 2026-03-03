@@ -12,7 +12,7 @@ const navLinks = [
 ---
 
 <header
-  class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100"
+  class="fixed top-0 left-0 right-0 z-50 bg-[#FAF9F6]/80 backdrop-blur-md border-b border-slate-100"
 >
   <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
     <a href="/" class="flex items-center gap-2 group">
@@ -45,13 +45,8 @@ const navLinks = [
 
     <div class="flex items-center gap-4">
       <a
-        href="#"
-        class="hidden sm:block text-sm font-bold text-[#2C2C2E]/60 hover:text-[#2C2C2E] transition-colors"
-        >{t('nav.login')}</a
-      >
-      <a
         href="https://api.whispertranscriber.com/download"
-        class="bg-[#2C2C2E] text-white text-sm font-bold px-6 py-2.5 rounded-full hover:opacity-90 transition-all shadow-sm"
+        class="hidden sm:block bg-[#2C2C2E] text-white text-sm font-bold px-6 py-2.5 rounded-full hover:opacity-90 transition-all shadow-sm"
         >{t('nav.getStarted')}</a
       >
 
@@ -76,7 +71,7 @@ const navLinks = [
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden absolute top-20 left-0 right-0 bg-white border-b border-slate-100 p-6 shadow-lg z-50"
+    class="hidden md:hidden absolute top-20 left-0 right-0 bg-[#FAF9F6] border-b border-slate-100 p-6 shadow-lg z-50"
   >
     <nav class="flex flex-col gap-6">
       {
@@ -90,9 +85,9 @@ const navLinks = [
         ))
       }
       <a
-        href="#"
-        class="text-base font-bold text-[#2C2C2E]/80 hover:text-[#2C2C2E] transition-colors sm:hidden"
-        >{t('nav.login')}</a
+        href="https://api.whispertranscriber.com/download"
+        class="text-base font-bold text-white bg-[#2C2C2E] text-center py-3 rounded-xl hover:opacity-90 transition-all sm:hidden mobile-link"
+        >{t('nav.getStarted')}</a
       >
     </nav>
   </div>
