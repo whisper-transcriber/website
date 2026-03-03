@@ -332,43 +332,46 @@ const VIDEO_BASE_PATH = '/videos'
     if (!tabs.length || !videoPlayer || !loader) return
 
     tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        tabs.forEach((t) => {
-          t.className =
-            'feature-tab-1 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-transparent bg-transparent hover:bg-brand-dark/5 hover:border-brand-dark/10'
-          const h3 = t.querySelector('h3')
-          const p = t.querySelector('p')
+      // Allow both click (for mobile/tablets) and mouseenter (for desktop hover)
+      ;['click', 'mouseenter'].forEach((eventType) => {
+        tab.addEventListener(eventType, () => {
+          tabs.forEach((t) => {
+            t.className =
+              'feature-tab-1 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-transparent bg-transparent hover:bg-brand-dark/5 hover:border-brand-dark/10'
+            const h3 = t.querySelector('h3')
+            const p = t.querySelector('p')
+            if (h3)
+              h3.className =
+                'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-brand-dark/70 group-hover:text-brand-dark'
+            if (p)
+              p.className =
+                'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-brand-dark/70 group-hover:text-brand-dark/70'
+          })
+
+          tab.className =
+            'feature-tab-1 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-brand-dark bg-white shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)]'
+          const h3 = tab.querySelector('h3')
+          const p = tab.querySelector('p')
           if (h3)
             h3.className =
-              'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-brand-dark/70 group-hover:text-brand-dark'
+              'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-brand-dark'
           if (p)
             p.className =
-              'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-brand-dark/70 group-hover:text-brand-dark/70'
+              'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-brand-dark/80'
+
+          const videoKey = tab.getAttribute('data-videokey')
+          if (videoKey && !videoPlayer.src.includes(videoKey)) {
+            loader.classList.remove('opacity-0')
+            videoPlayer.classList.add('opacity-0')
+
+            setTimeout(() => {
+              videoPlayer.src = `${VIDEO_BASE_PATH}/${lang}/${videoKey}.mp4`
+              videoPlayer
+                .play()
+                .catch((e) => console.log('Autoplay prevented:', e))
+            }, 300)
+          }
         })
-
-        tab.className =
-          'feature-tab-1 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-brand-dark bg-white shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)]'
-        const h3 = tab.querySelector('h3')
-        const p = tab.querySelector('p')
-        if (h3)
-          h3.className =
-            'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-brand-dark'
-        if (p)
-          p.className =
-            'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-brand-dark/80'
-
-        const videoKey = tab.getAttribute('data-videokey')
-        if (videoKey && !videoPlayer.src.includes(videoKey)) {
-          loader.classList.remove('opacity-0')
-          videoPlayer.classList.add('opacity-0')
-
-          setTimeout(() => {
-            videoPlayer.src = `${VIDEO_BASE_PATH}/${lang}/${videoKey}.mp4`
-            videoPlayer
-              .play()
-              .catch((e) => console.log('Autoplay prevented:', e))
-          }, 300)
-        }
       })
     })
   }
@@ -383,42 +386,45 @@ const VIDEO_BASE_PATH = '/videos'
     if (!tabs.length || !videoPlayer || !loader) return
 
     tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        tabs.forEach((t) => {
-          t.className =
-            'feature-tab-2 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-transparent bg-transparent hover:bg-brand-dark/5 hover:border-brand-dark/10'
-          const h3 = t.querySelector('h3')
-          const p = t.querySelector('p')
+      // Allow both click (for mobile/tablets) and mouseenter (for desktop hover)
+      ;['click', 'mouseenter'].forEach((eventType) => {
+        tab.addEventListener(eventType, () => {
+          tabs.forEach((t) => {
+            t.className =
+              'feature-tab-2 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-transparent bg-transparent hover:bg-brand-dark/5 hover:border-brand-dark/10'
+            const h3 = t.querySelector('h3')
+            const p = t.querySelector('p')
+            if (h3)
+              h3.className =
+                'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-brand-dark/70 group-hover:text-brand-dark'
+            if (p)
+              p.className =
+                'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-brand-dark/70 group-hover:text-brand-dark/70'
+          })
+
+          tab.className =
+            'feature-tab-2 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-brand-dark bg-white shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)]'
+          const h3 = tab.querySelector('h3')
+          const p = tab.querySelector('p')
           if (h3)
             h3.className =
-              'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-brand-dark/70 group-hover:text-brand-dark'
+              'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-brand-dark'
           if (p)
             p.className =
-              'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-brand-dark/70 group-hover:text-brand-dark/70'
+              'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-brand-dark/80'
+
+          const videoKey = tab.getAttribute('data-videokey')
+          if (videoKey && !videoPlayer.src.includes(videoKey)) {
+            loader.classList.remove('opacity-0')
+            videoPlayer.classList.add('opacity-0')
+            setTimeout(() => {
+              videoPlayer.src = `${VIDEO_BASE_PATH}/${lang}/${videoKey}.mp4`
+              videoPlayer
+                .play()
+                .catch((e) => console.log('Autoplay prevented:', e))
+            }, 300)
+          }
         })
-
-        tab.className =
-          'feature-tab-2 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-brand-dark bg-white shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)]'
-        const h3 = tab.querySelector('h3')
-        const p = tab.querySelector('p')
-        if (h3)
-          h3.className =
-            'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-brand-dark'
-        if (p)
-          p.className =
-            'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-brand-dark/80'
-
-        const videoKey = tab.getAttribute('data-videokey')
-        if (videoKey && !videoPlayer.src.includes(videoKey)) {
-          loader.classList.remove('opacity-0')
-          videoPlayer.classList.add('opacity-0')
-          setTimeout(() => {
-            videoPlayer.src = `${VIDEO_BASE_PATH}/${lang}/${videoKey}.mp4`
-            videoPlayer
-              .play()
-              .catch((e) => console.log('Autoplay prevented:', e))
-          }, 300)
-        }
       })
     })
   }
