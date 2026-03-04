@@ -36,7 +36,7 @@ export const ui = {
         'footer.copyright': '&copy; 2026 Whisper Transcriber. Built with Flow.',
 
         // Index CTA
-        'index.cta.title': 'Ready to <span class="opacity-60">Fly?</span>',
+        'index.cta.title': 'Ready to <span class="opacity-70">Fly?</span>',
         'index.cta.description': 'Your voice. Your Mac. Your flow. No cloud, no limits.',
         'index.cta.download': 'Download for macOS',
 
@@ -63,7 +63,7 @@ export const ui = {
         'comparison.limits.whisper': 'Unlimited',
 
         // How It Works
-        'how.title': 'Simple as <span class="opacity-30">1-2-3</span>',
+        'how.title': 'Simple as <span class="opacity-70">1-2-3</span>',
         'how.step1.title': 'Hold',
         'how.step1.desc': 'Press and hold your configurable hotkey. A floating indicator appears on screen.',
         'how.step2.title': 'Speak',
@@ -72,7 +72,7 @@ export const ui = {
         'how.step3.desc': "Release the key. In seconds, text is automatically pasted into whatever app you're using.",
 
         // Features
-        'features.title': 'Built with the <br /><span class="opacity-50">speed of thought.</span>',
+        'features.title': 'Built with the <br /><span class="opacity-70">speed of thought.</span>',
         'features.subtitle': 'Every feature is designed to make voice your primary input method. Seamless, private, and remarkably intelligent.',
         'features.item1.title': '100% Local & Private',
         'features.item1.desc': 'Your voice never leaves your Mac. Zero data sent to servers. Works completely offline.',
@@ -92,7 +92,7 @@ export const ui = {
         'features.item8.desc': 'Subtle visual pulsing feedback while you record. Visible across all spaces and apps.',
 
         // Privacy Table
-        'privacy.title': 'Designed for <br /><span class="opacity-50">privacy from day one.</span>',
+        'privacy.title': 'Designed for <br /><span class="opacity-70">privacy from day one.</span>',
         'privacy.desc': 'Your voice is personal. We treat it that way. Recorded audio is transcribed locally and deleted immediately after.',
         'privacy.table.header1': 'Security Check',
         'privacy.table.header2': 'Whisper Transcriber',
@@ -116,11 +116,11 @@ export const ui = {
 
         // Testimonials
         'testimonials.badge': 'WALL OF LOVE',
-        'testimonials.title': 'Don\'t just take <br /><span class="opacity-30">our word for it.</span>',
+        'testimonials.title': 'Don\'t just take <br /><span class="opacity-70">our word for it.</span>',
         'testimonials.subtitle': 'Professionals, developers, and creators sharing their unedited experiences.',
 
         // Who It's For
-        'who.title': 'Built for <br /><span class="opacity-30">builders and thinkers.</span>',
+        'who.title': 'Built for <br /><span class="opacity-70">builders and thinkers.</span>',
         'who.devs.title': 'Developers',
         'who.devs.desc': 'Dictate prompts for AI, write comments, PRs, and docs. Keep your focus on the logic.',
         'who.writers.title': 'Writers & Creators',
@@ -135,7 +135,7 @@ export const ui = {
         'who.multilingual.desc': 'Switch between 99 languages with one click. Perfect for international teams.',
 
         // Competitor Comparison
-        'comp.title': 'Why <span class="opacity-30">Whisper Transcriber?</span>',
+        'comp.title': 'Why <span class="opacity-70">Whisper Transcriber?</span>',
         'comp.table.header1': 'Feature',
         'comp.table.header2': 'Whisper Transcriber',
         'comp.table.header3': 'Competitors',
@@ -182,7 +182,7 @@ export const ui = {
         'req.perm.quote': '"Zero cloud concerns. We only ask for what\'s needed to run natively on your Mac."',
 
         // Pricing
-        'pricing.title': 'One price. <span class="opacity-30">Forever.</span>',
+        'pricing.title': 'One price. <span class="opacity-70">Forever.</span>',
         'pricing.desc': 'No subscriptions. No cloud costs. Just a powerful tool you own for life.',
         'pricing.free.name': 'Free Trial',
         'pricing.free.price': '0',
@@ -207,7 +207,7 @@ export const ui = {
         'pricing.why.desc': 'Competitors cost $12–15/month ($144–$180/year). With Whisper Transcriber, you pay once and use it forever. It\'s yours.',
 
         // FAQ
-        'faq.title': 'Common <br /><span class="opacity-30">questions.</span>',
+        'faq.title': 'Common <br /><span class="opacity-70">questions.</span>',
         'faq.q1': 'How does it work?',
         'faq.a1': 'Hold a hotkey, speak, release. Your audio is transcribed locally on your Mac using AI (Whisper models) and the text is automatically pasted into the frontmost app.',
         'faq.q2': 'Does it require internet?',
@@ -253,7 +253,7 @@ export const ui = {
         'footer.copyright': '&copy; 2026 Whisper Transcriber. Feito com Flow.',
 
         // Index CTA
-        'index.cta.title': 'Pronto para <span class="opacity-60">voar?</span>',
+        'index.cta.title': 'Pronto para <span class="opacity-70">voar?</span>',
         'index.cta.description': 'Sua voz. Seu Mac. Seu fluxo. Sem nuvem, sem limites.',
         'index.cta.download': 'Baixar para macOS',
 
@@ -280,7 +280,7 @@ export const ui = {
         'comparison.limits.whisper': 'Ilimitado',
 
         // How It Works
-        'how.title': 'Simples como <span class="opacity-30">1-2-3</span>',
+        'how.title': 'Simples como <span class="opacity-70">1-2-3</span>',
         'how.step1.title': 'Pressione',
         'how.step1.desc': 'Pressione e segure seu atalho configurável. Um indicador flutuante aparece na tela.',
         'how.step2.title': 'Fale',
@@ -289,7 +289,7 @@ export const ui = {
         'how.step3.desc': "Solte a tecla. Em segundos, o texto é colado automaticamente em qualquer app que você estiver usando.",
 
         // Features
-        'features.title': 'Criado para a <br /><span class="opacity-50">velocidade do pensamento.</span>',
+        'features.title': 'Criado para a <br /><span class="opacity-70">velocidade do pensamento.</span>',
         'features.subtitle': 'Cada recurso foi desenhado para tornar a voz sua principal entrada. Fluido, privado e incrivelmente inteligente.',
         'features.item1.title': '100% Local e Privado',
         'features.item1.desc': 'Sua voz nunca sai do Mac. Zero dados nos servidores. Funciona totalmente offline.',
@@ -309,7 +309,7 @@ export const ui = {
         'features.item8.desc': 'Indicador visual sutil e animado enquanto grava. Visível sempre no topo.',
 
         // Privacy Table
-        'privacy.title': 'Projetado para <br /><span class="opacity-50">privacidade desde o primeiro dia.</span>',
+        'privacy.title': 'Projetado para <br /><span class="opacity-70">privacidade desde o primeiro dia.</span>',
         'privacy.desc': 'Sua voz é pessoal. Nós também achamos. O áudio gravado é transcrito localmente e excluído imediatamente.',
         'privacy.table.header1': 'Checagem de Segurança',
         'privacy.table.header2': 'Whisper Transcriber',
@@ -333,11 +333,11 @@ export const ui = {
 
         // Testimonials
         'testimonials.badge': 'O QUE DIZEM',
-        'testimonials.title': 'Não acredite apenas <br /><span class="opacity-30">no que nós dizemos.</span>',
+        'testimonials.title': 'Não acredite apenas <br /><span class="opacity-70">no que nós dizemos.</span>',
         'testimonials.subtitle': 'Profissionais, desenvolvedores e criadores compartilhando suas experiências reais e sem filtro.',
 
         // Who It's For
-        'who.title': 'Feito para <br /><span class="opacity-30">criadores, programadores e pensadores.</span>',
+        'who.title': 'Feito para <br /><span class="opacity-70">criadores, programadores e pensadores.</span>',
         'who.devs.title': 'Desenvolvedores',
         'who.devs.desc': 'Dite prompts longos para IA, escreva commits, PRs e documentações enquanto foca na lógica.',
         'who.writers.title': 'Escritores & Criadores',
@@ -352,7 +352,7 @@ export const ui = {
         'who.multilingual.desc': 'Alterne entre até 99 idiomas instantâneamente. Perfeito para times e trabalhos internacionais.',
 
         // Competitor Comparison
-        'comp.title': 'Por que o <span class="opacity-30">Whisper Transcriber?</span>',
+        'comp.title': 'Por que o <span class="opacity-70">Whisper Transcriber?</span>',
         'comp.table.header1': 'Recurso',
         'comp.table.header2': 'Whisper Transcriber',
         'comp.table.header3': 'Concorrentes',
@@ -399,7 +399,7 @@ export const ui = {
         'req.perm.quote': '"Sem paranóia de nuvem. Só pedimos os privilégios básicos pro sistema rodar 100% nativo."',
 
         // Pricing
-        'pricing.title': 'Preço único. <span class="opacity-30">Para sempre.</span>',
+        'pricing.title': 'Preço único. <span class="opacity-70">Para sempre.</span>',
         'pricing.desc': 'Sem assinaturas. Sem cobranças em dólar por mês. Uma ferramenta que é sua para sempre.',
         'pricing.free.name': 'Teste Grátis',
         'pricing.free.price': '0',
@@ -424,7 +424,7 @@ export const ui = {
         'pricing.why.desc': 'Alternativas cobram em dólar na casa dos R$ 75 a R$ 150/mês. Com o Whisper Transcriber, você paga uma única vez.',
 
         // FAQ
-        'faq.title': 'Perguntas <br /><span class="opacity-30">frequentes.</span>',
+        'faq.title': 'Perguntas <br /><span class="opacity-70">frequentes.</span>',
         'faq.q1': 'Como funciona?',
         'faq.a1': 'Segure o atalho, fale e solte. O seu áudio é transcrito localmente no Mac usando Inteligência Artificial (modelos Whisper da OpenAI) e o texto é injetado no aplicativo aberto no momento.',
         'faq.q2': 'Precisa de internet?',
