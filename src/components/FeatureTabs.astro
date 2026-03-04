@@ -152,28 +152,10 @@ const VIDEO_BASE_PATH = '/videos'
         <div
           class="relative w-full aspect-square rounded-3xl overflow-hidden border border-brand-dark/10 shadow-2xl bg-cream-100 group/video"
         >
-          <!-- Loading state placeholder -->
-          <div
-            class="absolute inset-0 flex items-center justify-center opacity-100 transition-opacity duration-300"
-            id="video-loader-1"
-          >
-            <div
-              class="w-8 h-8 rounded-full border-4 border-brand-dark/20 border-t-brand-dark animate-spin"
-            >
-            </div>
-          </div>
+          <div class="hidden" id="video-loader-1"></div>
 
-          <!-- Video Element -->
-          <video
-            id="video-player-1"
-            data-src={`${VIDEO_BASE_PATH}/${lang}/${featureGroup1[0].videoKey}.mp4`}
-            muted
-            playsinline
-            class="absolute top-0 left-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-500"
-            onloadeddata="this.classList.remove('opacity-0'); document.getElementById('video-loader-1').classList.add('opacity-0');"
-          >
-            <track default kind="captions" srclang="en" label="English" />
-          </video>
+          <!-- Video container — JS will create <video> elements here -->
+          <div class="absolute inset-0 z-10" id="video-container-1"></div>
 
           <div
             class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 pointer-events-none z-20"
@@ -208,28 +190,10 @@ const VIDEO_BASE_PATH = '/videos'
         <div
           class="relative w-full aspect-square rounded-3xl overflow-hidden border border-brand-dark/10 shadow-2xl bg-cream-100 group/video"
         >
-          <!-- Loading loader -->
-          <div
-            class="absolute inset-0 flex items-center justify-center opacity-100 transition-opacity duration-300"
-            id="video-loader-2"
-          >
-            <div
-              class="w-8 h-8 rounded-full border-4 border-brand-dark/20 border-t-brand-dark animate-spin"
-            >
-            </div>
-          </div>
+          <div class="hidden" id="video-loader-2"></div>
 
-          <!-- Video Element -->
-          <video
-            id="video-player-2"
-            data-src={`${VIDEO_BASE_PATH}/${lang}/${featureGroup2[0].videoKey}.mp4`}
-            muted
-            playsinline
-            class="absolute top-0 left-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-500"
-            onloadeddata="this.classList.remove('opacity-0'); document.getElementById('video-loader-2').classList.add('opacity-0');"
-          >
-            <track default kind="captions" srclang="en" label="English" />
-          </video>
+          <!-- Video container — JS will create <video> elements here -->
+          <div class="absolute inset-0 z-10" id="video-container-2"></div>
 
           <div
             class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 pointer-events-none z-20"
@@ -290,247 +254,165 @@ const VIDEO_BASE_PATH = '/videos'
 <script>
   const VIDEO_BASE_PATH = '/videos'
   const lang = document.documentElement.lang || 'en'
+  const VIDEO_CLASS = 'w-full h-full object-cover'
 
-  // Lazy load initial videos when their section enters the viewport
-  function setupLazyVideo(playerElement: HTMLVideoElement, sectionId: string) {
-    if (!playerElement || !window.IntersectionObserver) return
+  // Create a fresh <video> element — avoids Safari sizing bugs on src change
+  function createVideoElement(src: string): HTMLVideoElement {
+    const video = document.createElement('video')
+    video.src = src
+    video.muted = true
+    video.playsInline = true
+    video.preload = 'auto'
+    video.className = VIDEO_CLASS
+    video.style.cssText = 'display:block;'
+    return video
+  }
 
+  function loadVideo(
+    container: HTMLElement,
+    loader: HTMLElement,
+    src: string,
+    onEnded: () => void
+  ): HTMLVideoElement {
+    // Remove any existing video
+    container.innerHTML = ''
+
+    // Show loader
+    loader.classList.remove('opacity-0')
+
+    // Create fresh video element
+    const video = createVideoElement(src)
+    container.appendChild(video)
+
+    // When video is playing, reveal it and hide loader
+    video.addEventListener('playing', () => {
+      loader.classList.add('opacity-0')
+    })
+
+    video.addEventListener('ended', onEnded)
+
+    // Start playback when ready
+    video.addEventListener('canplay', () => video.play().catch(() => {}), { once: true })
+
+    return video
+  }
+
+  function setupTabGroup(
+    tabClass: string,
+    containerId: string,
+    loaderId: string,
+    sectionId: string,
+    initialSrc: string
+  ) {
+    const tabs = document.querySelectorAll(`.${tabClass}`)
+    const container = document.getElementById(containerId)
+    const loader = document.getElementById(loaderId)
+
+    if (!tabs.length || !container || !loader) return
+
+    let currentIndex = 0
+    let autoPlayPaused = false
+    let currentVideo: HTMLVideoElement | null = null
+
+    const onEnded = () => {
+      if (autoPlayPaused) {
+        if (currentVideo) {
+          currentVideo.currentTime = 0
+          currentVideo.play().catch(() => {})
+        }
+      } else {
+        activateTab((currentIndex + 1) % tabs.length)
+      }
+    }
+
+    const activateTab = (index: number) => {
+      currentIndex = index
+      tabs.forEach((t, i) => {
+        const isActive = i === currentIndex
+        t.className = `${tabClass} text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center ${
+          isActive
+            ? 'border-brand-dark bg-white shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)]'
+            : 'border-brand-dark/20 bg-transparent hover:bg-brand-dark/5 hover:border-brand-dark/40'
+        }`
+        const h3 = t.querySelector('h3')
+        const p = t.querySelector('p')
+        if (h3)
+          h3.className = `text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 ${
+            isActive ? 'text-brand-dark' : 'text-brand-dark/70 group-hover:text-brand-dark'
+          }`
+        if (p)
+          p.className = `text-sm tracking-tight leading-relaxed transition-colors duration-300 ${
+            isActive ? 'text-brand-dark/80' : 'text-brand-dark/70 group-hover:text-brand-dark/70'
+          }`
+
+        if (isActive) {
+          const videoKey = t.getAttribute('data-videokey')
+          if (videoKey) {
+            const src = `${VIDEO_BASE_PATH}/${lang}/${videoKey}.mp4`
+            if (!currentVideo || !currentVideo.src.includes(videoKey)) {
+              currentVideo = loadVideo(container, loader, src, onEnded)
+            }
+          }
+        }
+      })
+    }
+
+    const pauseAutoPlay = () => { autoPlayPaused = true }
+    const resumeAutoPlay = () => {
+      autoPlayPaused = false
+      if (currentVideo?.ended) {
+        activateTab((currentIndex + 1) % tabs.length)
+      } else if (currentVideo?.paused && currentVideo.currentTime > 0) {
+        currentVideo.play().catch(() => {})
+      }
+    }
+
+    tabs.forEach((tab, index) => {
+      ;['click', 'mouseenter'].forEach((eventType) => {
+        tab.addEventListener(eventType, () => {
+          if (currentIndex !== index) activateTab(index)
+        })
+      })
+      tab.addEventListener('mouseenter', pauseAutoPlay)
+      tab.addEventListener('mouseleave', resumeAutoPlay)
+      tab.addEventListener('touchstart', pauseAutoPlay, { passive: true })
+      tab.addEventListener('touchend', () => { setTimeout(resumeAutoPlay, 2000) }, { passive: true })
+    })
+
+    // Lazy load: only create initial video when section is near viewport
     const section = document.getElementById(sectionId)
-    if (!section) return
+    const startInitial = () => {
+      currentVideo = loadVideo(container, loader, initialSrc, onEnded)
+    }
+
+    if (!section || !window.IntersectionObserver) {
+      startInitial()
+      return
+    }
 
     const observer = new IntersectionObserver(
-      (entries, observer) => {
+      (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const dataSrc = playerElement.getAttribute('data-src')
-            if (dataSrc) {
-              playerElement.src = dataSrc
-              playerElement
-                .play()
-                .catch((e) => console.log('Autoplay prevented:', e))
-              playerElement.removeAttribute('data-src')
-            }
+            startInitial()
             observer.disconnect()
           }
         })
       },
-      { rootMargin: '200px 0px' } // Load video slightly before it scrolls into view
+      { rootMargin: '300px 0px' }
     )
-
     observer.observe(section)
   }
 
-  function setupTabs1() {
-    const tabsContainer = document.getElementById('tab-group-1')
-    const videoContainer = document.getElementById('features-part-1')
-    const tabs = document.querySelectorAll('.feature-tab-1')
-    const videoPlayer = document.getElementById(
-      'video-player-1'
-    ) as HTMLVideoElement
-    const loader = document.getElementById('video-loader-1')
-
-    if (!tabs.length || !videoPlayer || !loader || !videoContainer) return
-
-    let currentIndex = 0
-    let autoPlayPaused = false
-
-    const activateTab = (index: number) => {
-      currentIndex = index
-      tabs.forEach((t, i) => {
-        if (i === currentIndex) {
-          t.className =
-            'feature-tab-1 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-brand-dark bg-white shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)]'
-          const h3 = t.querySelector('h3')
-          const p = t.querySelector('p')
-          if (h3)
-            h3.className =
-              'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-brand-dark'
-          if (p)
-            p.className =
-              'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-brand-dark/80'
-
-          const videoKey = t.getAttribute('data-videokey')
-          if (videoKey && !videoPlayer.src.includes(videoKey)) {
-            loader.classList.remove('opacity-0')
-            videoPlayer.classList.add('opacity-0')
-
-            setTimeout(() => {
-              videoPlayer.src = `${VIDEO_BASE_PATH}/${lang}/${videoKey}.mp4`
-              videoPlayer
-                .play()
-                .catch((e) => console.log('Autoplay prevented:', e))
-            }, 300)
-          }
-        } else {
-          t.className =
-            'feature-tab-1 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-brand-dark/20 bg-transparent hover:bg-brand-dark/5 hover:border-brand-dark/40'
-          const h3 = t.querySelector('h3')
-          const p = t.querySelector('p')
-          if (h3)
-            h3.className =
-              'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-brand-dark/70 group-hover:text-brand-dark'
-          if (p)
-            p.className =
-              'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-brand-dark/70 group-hover:text-brand-dark/70'
-        }
-      })
-    }
-
-    videoPlayer.addEventListener('ended', () => {
-      if (autoPlayPaused) {
-        // Loop the current video if user is reading (reset time for Safari)
-        videoPlayer.currentTime = 0
-        videoPlayer.play().catch((e) => console.log('Autoplay prevented:', e))
-      } else {
-        // Auto-advance to next feature
-        const nextIndex = (currentIndex + 1) % tabs.length
-        activateTab(nextIndex)
-      }
-    })
-
-    const pauseAutoPlay = () => {
-      autoPlayPaused = true
-    }
-
-    const resumeAutoPlay = () => {
-      autoPlayPaused = false
-      if (videoPlayer.ended) {
-        const nextIndex = (currentIndex + 1) % tabs.length
-        activateTab(nextIndex)
-      } else if (videoPlayer.paused && videoPlayer.currentTime > 0) {
-        videoPlayer.play().catch(() => {})
-      }
-    }
-
-    tabs.forEach((tab, index) => {
-      // Allow both click (for mobile/tablets) and mouseenter (for desktop hover)
-      ;['click', 'mouseenter'].forEach((eventType) => {
-        tab.addEventListener(eventType, () => {
-          if (currentIndex !== index) {
-            activateTab(index)
-          }
-        })
-      })
-
-      tab.addEventListener('mouseenter', pauseAutoPlay)
-      tab.addEventListener('mouseleave', resumeAutoPlay)
-      tab.addEventListener('touchstart', pauseAutoPlay, { passive: true })
-      tab.addEventListener('touchend', () => { setTimeout(resumeAutoPlay, 2000) }, { passive: true })
-    })
-  }
-
-  function setupTabs2() {
-    const tabsContainer = document.getElementById('tab-group-2')
-    const videoContainer = document.getElementById('features-part-2')
-    const tabs = document.querySelectorAll('.feature-tab-2')
-    const videoPlayer = document.getElementById(
-      'video-player-2'
-    ) as HTMLVideoElement
-    const loader = document.getElementById('video-loader-2')
-
-    if (!tabs.length || !videoPlayer || !loader || !videoContainer) return
-
-    let currentIndex = 0
-    let autoPlayPaused = false
-
-    const activateTab = (index: number) => {
-      currentIndex = index
-      tabs.forEach((t, i) => {
-        if (i === currentIndex) {
-          t.className =
-            'feature-tab-2 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-brand-dark bg-white shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)]'
-          const h3 = t.querySelector('h3')
-          const p = t.querySelector('p')
-          if (h3)
-            h3.className =
-              'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-brand-dark'
-          if (p)
-            p.className =
-              'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-brand-dark/80'
-
-          const videoKey = t.getAttribute('data-videokey')
-          if (videoKey && !videoPlayer.src.includes(videoKey)) {
-            loader.classList.remove('opacity-0')
-            videoPlayer.classList.add('opacity-0')
-            setTimeout(() => {
-              videoPlayer.src = `${VIDEO_BASE_PATH}/${lang}/${videoKey}.mp4`
-              videoPlayer
-                .play()
-                .catch((e) => console.log('Autoplay prevented:', e))
-            }, 300)
-          }
-        } else {
-          t.className =
-            'feature-tab-2 text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 w-full group flex-1 flex flex-col justify-center border-brand-dark/20 bg-transparent hover:bg-brand-dark/5 hover:border-brand-dark/40'
-          const h3 = t.querySelector('h3')
-          const p = t.querySelector('p')
-          if (h3)
-            h3.className =
-              'text-lg md:text-xl font-bold mb-1 md:mb-2 transition-colors duration-300 text-brand-dark/70 group-hover:text-brand-dark'
-          if (p)
-            p.className =
-              'text-sm tracking-tight leading-relaxed transition-colors duration-300 text-brand-dark/70 group-hover:text-brand-dark/70'
-        }
-      })
-    }
-
-    videoPlayer.addEventListener('ended', () => {
-      if (autoPlayPaused) {
-        // Loop the current video if user is reading (reset time for Safari)
-        videoPlayer.currentTime = 0
-        videoPlayer.play().catch((e) => console.log('Autoplay prevented:', e))
-      } else {
-        // Auto-advance to next feature
-        const nextIndex = (currentIndex + 1) % tabs.length
-        activateTab(nextIndex)
-      }
-    })
-
-    const pauseAutoPlay = () => {
-      autoPlayPaused = true
-    }
-
-    const resumeAutoPlay = () => {
-      autoPlayPaused = false
-      if (videoPlayer.ended) {
-        const nextIndex = (currentIndex + 1) % tabs.length
-        activateTab(nextIndex)
-      } else if (videoPlayer.paused && videoPlayer.currentTime > 0) {
-        videoPlayer.play().catch(() => {})
-      }
-    }
-
-    tabs.forEach((tab, index) => {
-      // Allow both click (for mobile/tablets) and mouseenter (for desktop hover)
-      ;['click', 'mouseenter'].forEach((eventType) => {
-        tab.addEventListener(eventType, () => {
-          if (currentIndex !== index) {
-            activateTab(index)
-          }
-        })
-      })
-
-      tab.addEventListener('mouseenter', pauseAutoPlay)
-      tab.addEventListener('mouseleave', resumeAutoPlay)
-      tab.addEventListener('touchstart', pauseAutoPlay, { passive: true })
-      tab.addEventListener('touchend', () => { setTimeout(resumeAutoPlay, 2000) }, { passive: true })
-    })
-  }
-
   function init() {
-    setupTabs1()
-    setupTabs2()
-
-    // Initialize lazy loading for the first element in each group
-    const video1 = document.getElementById(
-      'video-player-1'
-    ) as HTMLVideoElement | null
-    const video2 = document.getElementById(
-      'video-player-2'
-    ) as HTMLVideoElement | null
-
-    if (video1) setupLazyVideo(video1, 'features-part-1')
-    if (video2) setupLazyVideo(video2, 'features-part-2')
+    setupTabGroup(
+      'feature-tab-1', 'video-container-1', 'video-loader-1', 'features-part-1',
+      `${VIDEO_BASE_PATH}/${lang}/${document.querySelector('.feature-tab-1')?.getAttribute('data-videokey')}.mp4`
+    )
+    setupTabGroup(
+      'feature-tab-2', 'video-container-2', 'video-loader-2', 'features-part-2',
+      `${VIDEO_BASE_PATH}/${lang}/${document.querySelector('.feature-tab-2')?.getAttribute('data-videokey')}.mp4`
+    )
   }
 
   init()
