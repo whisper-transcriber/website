@@ -81,7 +81,7 @@ const VIDEO_BASE_PATH = '/videos'
       </h2>
     </div>
 
-    <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 items-stretch">
+    <div class="flex flex-col-reverse lg:flex-row gap-8 lg:gap-16 items-stretch">
       <!-- Tabs (Left) -->
       <div
         class="w-full lg:w-5/12 flex flex-col gap-2 relative z-20"
@@ -159,7 +159,7 @@ const VIDEO_BASE_PATH = '/videos'
 >
   <div class="container mx-auto px-6 relative z-10 max-w-6xl">
     <div
-      class="flex flex-col-reverse lg:flex-row gap-8 lg:gap-16 items-stretch"
+      class="flex flex-col lg:flex-row gap-8 lg:gap-16 items-stretch"
     >
       <!-- Video Display (Left) -->
       <div class="w-full lg:w-7/12 mt-8 lg:mt-0 relative flex-shrink-0">
@@ -399,6 +399,20 @@ const VIDEO_BASE_PATH = '/videos'
       `${VIDEO_BASE_PATH}/${lang}/${document.querySelector('.feature-tab-2')?.getAttribute('data-videokey')}.mp4`
     )
   }
+
+  // Fallback: Safari may block autoplay even for muted videos.
+  // Play all paused videos on first user interaction.
+  function playAllPaused() {
+    document.querySelectorAll('video').forEach((v) => {
+      if (v.paused) v.play().catch(() => {})
+    })
+    document.removeEventListener('click', playAllPaused)
+    document.removeEventListener('touchstart', playAllPaused)
+    document.removeEventListener('keydown', playAllPaused)
+  }
+  document.addEventListener('click', playAllPaused)
+  document.addEventListener('touchstart', playAllPaused, { passive: true })
+  document.addEventListener('keydown', playAllPaused)
 
   init()
   document.addEventListener('astro:page-load', init)
