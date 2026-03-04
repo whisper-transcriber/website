@@ -261,8 +261,15 @@ const VIDEO_BASE_PATH = '/videos'
     const video = document.createElement('video')
     video.src = src
     video.muted = true
+    video.defaultMuted = true
     video.playsInline = true
+    video.autoplay = true
     video.preload = 'auto'
+    // iOS Safari needs these as HTML attributes too
+    video.setAttribute('muted', '')
+    video.setAttribute('playsinline', '')
+    video.setAttribute('webkit-playsinline', '')
+    video.setAttribute('autoplay', '')
     video.className = VIDEO_CLASS
     video.style.cssText = 'display:block;'
     return video
@@ -291,8 +298,10 @@ const VIDEO_BASE_PATH = '/videos'
 
     video.addEventListener('ended', onEnded)
 
-    // Start playback when ready
-    video.addEventListener('canplay', () => video.play().catch(() => {}), { once: true })
+    // Start playback when ready — try multiple events for iOS compatibility
+    const tryPlay = () => video.play().catch(() => {})
+    video.addEventListener('canplay', tryPlay, { once: true })
+    video.addEventListener('loadeddata', tryPlay, { once: true })
 
     return video
   }
