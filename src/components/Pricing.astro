@@ -19,6 +19,8 @@ const plans = [
     cta: t('pricing.free.cta'),
     highlight: false,
     badge: '',
+    id: 'free',
+    link: 'https://api.whispertranscriber.com/download',
   },
   {
     name: t('pricing.paid.name'),
@@ -34,6 +36,8 @@ const plans = [
     cta: t('pricing.paid.cta'),
     highlight: true,
     badge: t('pricing.paid.badge'),
+    id: 'paid',
+    link: 'https://checkout.whispertranscriber.com',
   },
 ]
 ---
@@ -106,8 +110,13 @@ const plans = [
               ))}
             </ul>
             <a
-              href="https://api.whispertranscriber.com/download"
-              class={`w-full py-5 rounded-2xl font-black text-center transition-all duration-300 block ${
+              id={plan.id === 'free' ? 'trial-btn' : undefined}
+              data-plan-id={plan.id}
+              data-share-title={t('pricing.free.iosShareTitle')}
+              data-share-btn={t('pricing.free.iosShareBtn')}
+              data-share-text={t('pricing.free.iosShareText')}
+              href={plan.link}
+              class={`w-full py-5 rounded-2xl font-black text-center transition-all duration-300 block trial-btn-element ${
                 plan.highlight
                   ? 'bg-cream-50 text-brand-dark hover:bg-slate-100'
                   : 'bg-brand-dark text-white hover:opacity-90'
@@ -132,3 +141,41 @@ const plans = [
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    initShareButtons();
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initShareButtons();
+  });
+
+  function initShareButtons() {
+    const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    
+    if (!isIOS || !navigator.share) return;
+
+    const trialBtns = document.querySelectorAll('.trial-btn-element[data-plan-id="free"]');
+    
+    trialBtns.forEach(btn => {
+      const shareTitle = btn.getAttribute('data-share-title') || 'Whisper Transcriber';
+      const shareBtnText = btn.getAttribute('data-share-btn');
+      const shareText = btn.getAttribute('data-share-text') || '';
+
+      if (shareBtnText) btn.textContent = shareBtnText;
+      
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        navigator.share({
+          title: shareTitle,
+          text: shareText,
+          url: window.location.href
+        }).catch(err => {
+            console.log('Error sharing:', err);
+        });
+      });
+    });
+  }
+</script>

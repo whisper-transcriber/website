@@ -1,12 +1,11 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils'
-import { testimonialsEN, testimonialsPT } from '../data/testimonials'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
 // Select the correct review dataset based on the current locale
-const allTestimonials = lang === 'pt' ? testimonialsPT : testimonialsEN
+const allTestimonials = t('testimonials.list') as unknown as Array<{ name: string, role: string, content: string, avatar: string }>
 ---
 
 <section
