@@ -329,5 +329,19 @@
   "faq.q6": "Is it compatible with Intel Macs?",
   "faq.a6": "No. Whisper Transcriber requires Apple Silicon (M1 or later) to run AI models locally via CoreML and Apple Neural Engine.",
   "faq.support.title": "Need more help?",
-  "faq.support.desc": "We respond to all support emails within 24 hours."
+  "faq.support.desc": "We respond to all support emails within 24 hours.",
+  "thankyou.title": "Thank you!",
+  "thankyou.subtitle": "Your license key has been sent to your email.",
+  "thankyou.checkEmail": "Check your inbox",
+  "thankyou.checkEmailDesc": "Look for an email from <strong>noreply@whispertranscriber.com</strong> with your license key and activation instructions.",
+  "thankyou.checkSpam": "Not in your inbox? Check your spam or promotions folder.",
+  "thankyou.step1": "Open the app from the menu bar",
+  "thankyou.step2": "Click <strong>License</strong>",
+  "thankyou.step3": "Paste your key and click <strong>Activate</strong>",
+  "thankyou.nextSteps": "Next steps",
+  "thankyou.help": "Need help? Contact us at",
+  "thankyou.backHome": "Back to home",
+  "thankyou.download": "Download for macOS",
+  "thankyou.iosShareBtn": "Send to Mac",
+  "thankyou.iosShareText": "Download Whisper Transcriber for Mac:"
 }
