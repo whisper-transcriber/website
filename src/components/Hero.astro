@@ -9,7 +9,7 @@ const t = useTranslations(lang)
 <section class="min-h-screen flex items-center pt-20 pb-12 bg-cream-100">
   <div class="max-w-5xl mx-auto px-6 text-center w-full">
     <div
-      class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-muted/10 border border-brand-muted/20 text-brand-dark/80 text-[13px] font-bold mb-10 tracking-wide uppercase"
+      class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-muted/10 border border-brand-muted/20 text-brand-dark/80 text-[13px] font-bold mb-5 md:mb-10 tracking-wide uppercase"
     >
       {t('hero.badge')}
     </div>
@@ -21,85 +21,98 @@ const t = useTranslations(lang)
     </h1>
 
     <p
-      class="text-lg md:text-xl lg:text-2xl text-brand-dark/70 mb-10 md:mb-12 max-w-4xl mx-auto font-medium leading-relaxed"
+      class="text-lg md:text-xl lg:text-2xl text-brand-dark/70 mb-6 md:mb-12 max-w-4xl mx-auto font-medium leading-relaxed"
     >
       {t('hero.description')}
     </p>
 
     <div
-      class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-5 mb-12 md:mb-16"
+      class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-5 mb-6 md:mb-16"
     >
       <DownloadButton label={t('hero.download') as string} />
     </div>
 
-    <!-- Badges -->
-    <div
-      class="flex flex-wrap justify-center gap-x-4 sm:gap-x-8 gap-y-3 sm:gap-y-4 mb-16 lg:mb-24 opacity-70"
-    >
-      <div
-        class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-dark"
-      >
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          ><path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2.5"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        {t('hero.badge.silicon')}
+    <!-- Social proof -->
+    <div class="flex justify-center mb-6 md:mb-16">
+      <div class="inline-flex items-center gap-2.5 pl-1 pr-5 py-1 rounded-full bg-gradient-to-r from-amber-100/80 to-amber-50/60">
+        <div class="flex -space-x-2">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" class="w-7 h-7 rounded-full ring-2 ring-white object-cover" />
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" class="w-7 h-7 rounded-full ring-2 ring-white object-cover" />
+          <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="" class="w-7 h-7 rounded-full ring-2 ring-white object-cover" />
+        </div>
+        <span class="text-sm font-black text-brand-dark uppercase tracking-widest">
+          <span id="download-count" data-locale={lang === 'br' ? 'pt-BR' : 'en-US'}>1,000+</span> downloads
+        </span>
       </div>
-      <div
-        class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-dark"
-      >
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          ><path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2.5"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        {t('hero.badge.macos')}
-      </div>
-      <div
-        class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-dark"
-      >
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          ><path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2.5"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        {t('hero.badge.offline')}
-      </div>
-      <div
-        class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-dark"
-      >
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          ><path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2.5"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        {t('hero.badge.privacy')}
+    </div>
+
+    <!-- Trusted by -->
+    <div class="border-t border-brand-dark/5 pt-6 md:pt-8 mb-6 md:mb-12 overflow-hidden">
+      <p class="text-xs font-bold uppercase tracking-widest text-brand-dark/30 mb-5 md:mb-6">
+        {lang === 'br' ? 'Impulsionando as melhores ideias' : 'Powering the world\'s best ideas'}
+      </p>
+      <div class="logo-marquee opacity-40 grayscale">
+        <div class="logo-track">
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/linear/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Linear</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/loom/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Loom</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/basecamp/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Basecamp</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/buffer/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Buffer</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/calendly/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Calendly</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/notion/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Notion</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/clickup/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">ClickUp</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/miro/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Miro</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/airtable/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Airtable</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/intercom/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Intercom</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/webflow/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Webflow</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/todoist/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Todoist</span></span>
+          <!-- Duplicate for seamless loop -->
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/linear/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Linear</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/loom/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Loom</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/basecamp/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Basecamp</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/buffer/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Buffer</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/calendly/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Calendly</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/notion/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Notion</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/clickup/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">ClickUp</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/miro/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Miro</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/airtable/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Airtable</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/intercom/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Intercom</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/webflow/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Webflow</span></span>
+          <span class="inline-flex items-center gap-2 mx-8 shrink-0"><img src="https://cdn.simpleicons.org/todoist/1a1a1a" alt="" class="h-4" /><span class="text-sm font-bold text-brand-dark">Todoist</span></span>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .logo-marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  .logo-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
+<script>
+  async function updateDownloadCount() {
+    try {
+      const res = await fetch('https://api.whispertranscriber.com/stats');
+      const data = await res.json();
+      const el = document.getElementById('download-count');
+      if (el && data.downloads) {
+        const locale = el.dataset.locale || 'en-US';
+        el.textContent = data.downloads.toLocaleString(locale) + '+';
+      }
+    } catch (_) {}
+  }
+  updateDownloadCount();
+</script>
