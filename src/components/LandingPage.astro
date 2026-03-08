@@ -55,7 +55,11 @@ import Footer from '../components/Footer.astro'
         <div
           class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-5 mb-12 md:mb-16"
         >
-          <DownloadButton label={t('hero.download') as string} />
+          <DownloadButton
+            label={t('hero.download') as string}
+            iosShareLabel={t('pricing.free.iosShareBtn') as string}
+            iosShareText={t('pricing.free.iosShareText') as string}
+          />
         </div>
       </div>
     </section>
