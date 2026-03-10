@@ -229,6 +229,7 @@ const VIDEO_BASE_PATH = '/videos'
 
 <script>
   const VIDEO_BASE_PATH = '/videos'
+  const VIDEO_VERSION = 'v2'
   const lang = document.documentElement.lang || 'en'
   const VIDEO_CLASS = 'w-full h-full object-cover'
 
@@ -333,7 +334,7 @@ const VIDEO_BASE_PATH = '/videos'
         if (isActive) {
           const videoKey = t.getAttribute('data-videokey')
           if (videoKey) {
-            const src = `${VIDEO_BASE_PATH}/${lang}/${videoKey}.mp4`
+            const src = `${VIDEO_BASE_PATH}/${lang}/${videoKey}.mp4?v=${VIDEO_VERSION}`
             if (!currentVideo || !currentVideo.src.includes(videoKey)) {
               currentVideo = loadVideo(container, loader, src, onEnded)
             }
@@ -392,11 +393,11 @@ const VIDEO_BASE_PATH = '/videos'
   function init() {
     setupTabGroup(
       'feature-tab-1', 'video-container-1', 'video-loader-1', 'features-part-1',
-      `${VIDEO_BASE_PATH}/${lang}/${document.querySelector('.feature-tab-1')?.getAttribute('data-videokey')}.mp4`
+      `${VIDEO_BASE_PATH}/${lang}/${document.querySelector('.feature-tab-1')?.getAttribute('data-videokey')}.mp4?v=${VIDEO_VERSION}`
     )
     setupTabGroup(
       'feature-tab-2', 'video-container-2', 'video-loader-2', 'features-part-2',
-      `${VIDEO_BASE_PATH}/${lang}/${document.querySelector('.feature-tab-2')?.getAttribute('data-videokey')}.mp4`
+      `${VIDEO_BASE_PATH}/${lang}/${document.querySelector('.feature-tab-2')?.getAttribute('data-videokey')}.mp4?v=${VIDEO_VERSION}`
     )
   }
 
