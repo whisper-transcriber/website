@@ -2,6 +2,7 @@
 import { getLangFromUrl, useTranslations } from '../i18n/utils'
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
+const privacyHref = lang === 'br' ? '/br/privacy' : '/privacy'
 ---
 
 <footer class="bg-cream-50 border-t border-brand-dark/5 py-12">
@@ -36,5 +37,8 @@ const t = useTranslations(lang)
         {t('hero.badge.privacy')}
       </span>
     </div>
+    <a href={privacyHref} class="text-xs text-brand-dark/30 hover:text-brand-dark/60 transition-colors">
+      {t('pp.title')}
+    </a>
   </div>
 </footer>
